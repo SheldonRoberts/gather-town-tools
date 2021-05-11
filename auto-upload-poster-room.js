@@ -162,4 +162,7 @@ const writeMap = async (posterData) => {
 // 	"/home/npfoss/Downloads/poster1.jpg",
 // 	"/home/npfoss/Downloads/poster2.jpg",
 // ]).then(console.log);
-writeMap(posterData);
+const run = () => {
+	writeMap(posterData);
+	console.log('ran!')
+}
