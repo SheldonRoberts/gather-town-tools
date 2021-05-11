@@ -1,9 +1,17 @@
-const http = require('http')
-const fs = require('fs')
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false});
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'content-type': 'text/html' })
-  fs.createReadStream('index.html').pipe(res)
+app.use(express.static('public'));
+app.get('/index.html', function(req, res){
+    res.sendFile(__dirname + "/" + "index.html");
 })
 
-server.listen(process.env.PORT || 3000)
+app.post('/getcity', urlencodedParser, function(req, res){
+    response = { city : req.body.city };
+    console.log(response);
+    res.end(JSON.stringify(response));
+})
+
+app.listen(3000, function() { console.log('listening')});
