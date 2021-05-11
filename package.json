@@ -1,6 +1,9 @@
 {
   "requires": true,
   "lockfileVersion": 1,
+  "scripts": {
+    "start": "node auto-upload-poster-room.js"
+  },
   "dependencies": {
     "axios": {
       "version": "0.21.0",
