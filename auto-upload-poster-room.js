@@ -6,10 +6,6 @@ const MAP_ID = "custom-entrance";
 const WIDTH = 94;
 const HEIGHT = 57;
 
-const zoomZoneImg =
-	"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2Fb2c9fbf1-4fc1-4b59-9ef1-e3de6b69981f?alt=media&token=cb74684a-3c6e-4260-b51c-c917e078124d";
-const zoomZoneImgActive =
-	"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2F8933cfdc-d180-4324-b8ba-5a191dfdb6dc?alt=media&token=4711da59-bf68-4c22-a53e-96944b4204c7";
 
 const posterData = [...Array(24).keys()].map((i) => {
 	// actually fill in your own poster data here, this is just 24 identical ones
@@ -22,8 +18,6 @@ const posterData = [...Array(24).keys()].map((i) => {
 			"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2Ff34f6bf2-3bf9-4d95-9fe5-280e5da132a0?alt=media&token=9bc3f3c3-b691-4688-b633-2b0082e3f014",
 		mapImgActive:
 			"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2Fbd842123-b038-4cf9-8e73-0fe335d56f0f?alt=media&token=86879c6d-2625-4379-8f23-6af0b22487d7",
-		zoomLink: "https://zoom.us",
-		// you can generate poster label images from an html canvas or any other way, then upload them with uploadFiles
 		numberImg:
 			"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2F9ea396a7-924e-470b-ad4d-c40b1abe761a?alt=media&token=608596ac-9fd1-45ed-a8ae-5439495ddf39",
 	};
@@ -89,7 +83,6 @@ const uploadFiles = async (filePaths) => {
 // takes basic poster data, and generates the map from it
 const writeMap = async (posterData) => {
 	let impassable = {}; // maps r,c to true if impassable
-	let zoomZones = [];
 	let posters = [];
 	let privateSpaces = [];
 
@@ -124,21 +117,6 @@ const writeMap = async (posterData) => {
 			width: 2,
 			height: 2,
 		});
-		// the zoom object, for backup
-		zoomZones.push({
-			x: topleft.x,
-			y: topleft.y + 8,
-			type: 4,
-			width: 10,
-			height: 2,
-			distThreshold: 0,
-			previewMessage: "press x for Zoom",
-			properties: {
-				zoomLink: poster.zoomLink,
-			},
-			normal: zoomZoneImg,
-			highlighted: zoomZoneImgActive,
-		});
 
 		// now for the impassible tiles on posters
 		for (let x = topleft.x + 3; x < topleft.x + 7; x++) {
@@ -151,12 +129,6 @@ const writeMap = async (posterData) => {
 		for (let x = topleft.x; x < topleft.x + 10; x++) {
 			for (let y = topleft.y; y < topleft.y + 8; y++) {
 				privateSpaces.push({ x, y, spaceId: "p" + index });
-			}
-		}
-		// zoom private space
-		for (let x = topleft.x; x < topleft.x + 10; x++) {
-			for (let y = topleft.y + 8; y < topleft.y + 10; y++) {
-				privateSpaces.push({ x, y, spaceId: "z" + index });
 			}
 		}
 	});
@@ -178,7 +150,7 @@ const writeMap = async (posterData) => {
 		spaceId: SPACE_ID,
 		mapId: MAP_ID,
 		mapContent: Object.assign(BASE_MAP, {
-			objects: BASE_MAP.objects.concat(posters).concat(zoomZones),
+			objects: BASE_MAP.objects.concat(posters),
 			spaces: privateSpaces,
 			collisions: new Buffer(collBytes).toString("base64"),
 			// ^ base64 encoded array of dimensions[1] x dimensions[0] bytes (each either 0x00 or 0x01)
@@ -190,4 +162,4 @@ const writeMap = async (posterData) => {
 // 	"/home/npfoss/Downloads/poster1.jpg",
 // 	"/home/npfoss/Downloads/poster2.jpg",
 // ]).then(console.log);
-writeMap(posterData);
+const run = () => writeMap(posterData);
