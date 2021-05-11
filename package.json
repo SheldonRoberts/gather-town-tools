@@ -10,11 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/SheldonRoberts/api-examples.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SheldonRoberts/api-examples/issues"
   },
-  "homepage": "https://github.com/SheldonRoberts/api-examples#readme"
+  "homepage": "https://github.com/SheldonRoberts/api-examples#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "follow-redirects": "^1.14.1"
+  }
 }
