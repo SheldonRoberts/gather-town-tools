@@ -1,17 +1,24 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: false});
+const express = require('express');
+const app = express();
+const port = 3000;
 
-app.use(express.static('public'));
-app.get('/index.html', function(req, res){
-    res.sendFile(__dirname + "/" + "index.html");
+app.use(express.urlencoded({
+  extended: true
+}))
+
+app.get('/',function(req,res) {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/submited',function(req,res) {
+  res.sendFile(__dirname + '/success.html');
+});
+
+app.post('/submit-form', (req, res) => {
+  const username = req.body.username
+  console.log(username)
+  res.redirect('/submited')
+  res.end()
 })
 
-app.post('/getcity', urlencodedParser, function(req, res){
-    response = { city : req.body.city };
-    console.log(response);
-    res.end(JSON.stringify(response));
-})
-
-app.listen(3000, function() { console.log('listening')});
+app.listen(port, () => console.log("listening on port " + port))
