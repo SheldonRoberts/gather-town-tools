@@ -23,6 +23,12 @@ const storage = multer.diskStorage({
 
 app.listen(PORT, () => console.log("listening on port " + PORT))
 
+
+
+app.get('/',function(req,res) {
+  res.sendFile(__dirname + '/index.html');
+});
+
 /*
 app.post('/submit-form', (req, res) => {
   const username = req.body.username
