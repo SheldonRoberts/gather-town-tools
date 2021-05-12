@@ -41,13 +41,24 @@ app.post('/submit-form', (req, res) => {
 })
 
 */
-app.post('/submit-form', (req, res) => {
+app.post('/', (req, res) => {
     // 10 is the limit I've defined for number of uploaded files at once
     // 'multiple_images' is the name of our file input field
     let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
 
     upload(req, res, function(err) {
-    
+      if (req.fileValidationError) {
+          return res.send(req.fileValidationError);
+      }
+      else if (!req.file) {
+         return res.send('Please select an image to upload');
+      }
+      else if (err instanceof multer.MulterError) {
+         return res.send(err);
+      }
+      else if (err) {
+         return res.send(err);
+      }
 
         let result = "You have uploaded these images: <hr />";
         const files = req.files;
