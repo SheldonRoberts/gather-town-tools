@@ -8,11 +8,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({
   extended: true
 }))
-app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/public'));
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, __dirname + '/images/uploads/');
+        cb(null, 'uploads/');
     },
 
     // By default, multer removes file extensions so let's add them back
