@@ -21,4 +21,4 @@ app.post('/submit-form', (req, res) => {
   res.end()
 })
 
-app.listen(PORT, () => console.log("listening on port " + port))
+app.listen(PORT, () => console.log("listening on port " + PORT))
