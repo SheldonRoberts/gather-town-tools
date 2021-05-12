@@ -14,14 +14,9 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src=auto-upload-poster-room.js></script>
 
-    <form method="POST" action="/upload-multiple-images" enctype="multipart/form-data">
-    <div>
-        <label>Select multiple images:</label>
-        <input type="file" name="multiple_images" multiple />
-    </div>
-    <div>
-        <input type="submit" name="btn_upload_multiple_images" value="Upload" />
-    </div>
+    <form action="/profile" method="post" enctype="multipart/form-data">
+  <input type="file" name="photos" multiple/>
+  <input type="submit">
 </form>
   </body>
 </html>

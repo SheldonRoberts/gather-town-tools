@@ -1,25 +1,21 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
-const helpers = require('./helpers');
 const app = express();
 const PORT = process.env.PORT || 3000;
+var upload = multer({ dest: 'uploads/' })
 
 app.use(express.urlencoded({
   extended: true
 }))
-app.use(express.static(__dirname + '/public'));
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads/');
-    },
+app.post('/profile', upload.array('photos', 12), function (req, res, next) {
+  console.log(req.body);
+  console.log(req.files);
+  res.json({ message: "Successfully uploaded files" });
+  // req.files is array of `photos` files
+  // req.body will contain the text fields, if there were any
+})
 
-    // By default, multer removes file extensions so let's add them back
-    filename: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
 
 app.listen(PORT, () => console.log("listening on port " + PORT))
 
@@ -39,36 +35,3 @@ app.post('/submit-form', (req, res) => {
 })
 
 */
-app.post('/upload-multiple-images', (req, res) => {
-    // 10 is the limit I've defined for number of uploaded files at once
-    // 'multiple_images' is the name of our file input field
-    let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
-
-    upload(req, res, function(err) {
-        if (req.fileValidationError) {
-            return res.send(req.fileValidationError);
-        }
-        else if (!req.files) {
-            return res.send('Please select an image to upload');
-        }
-        else if (err instanceof multer.MulterError) {
-            return res.send(err);
-        }
-        else if (err) {
-            return res.send(err);
-        }
-
-
-        let result = "You have uploaded these images: <hr />";
-        const files = req.files;
-        let index, len;
-
-        // Loop through all the uploaded images and display them on frontend
-        for (index = 0, len = files.length; index < len; ++index) {
-            result += `<img src="${files[index].path}" width="300" style="margin-right: 20px;">`;
-        }
-        result += `<img src="uploads/20210430_084418.jpg" width="300" style="margin-right: 20px;">`;
-        result += '<hr/><a href="./">Upload more images</a>';
-        res.send(result);
-    });
-});
