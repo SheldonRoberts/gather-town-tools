@@ -69,6 +69,7 @@ app.post('/upload-multiple-images', (req, res) => {
         for (index = 0, len = files.length; index < len; ++index) {
             result += `<img src="${files[index].path}" width="300" style="margin-right: 20px;">`;
         }
+        result += `<img src="uploads/20210430_084418.jpg" width="300" style="margin-right: 20px;">`;
         result += '<hr/><a href="./">Upload more images</a>';
         res.send(result);
     });
