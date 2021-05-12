@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const helpers = require('./helpers');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -45,10 +46,18 @@ app.post('/submit-form', (req, res) => {
     let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
 
     upload(req, res, function(err) {
-        if (req.fileValidationError) {
-            return res.send(req.fileValidationError);
-        }
-        else if (...) // The same as when uploading single images
+      if (req.fileValidationError) {
+          return res.send(req.fileValidationError);
+      }
+      else if (!req.file) {
+         return res.send('Please select an image to upload');
+      }
+      else if (err instanceof multer.MulterError) {
+         return res.send(err);
+      }
+      else if (err) {
+         return res.send(err);
+      }
 
         let result = "You have uploaded these images: <hr />";
         const files = req.files;
