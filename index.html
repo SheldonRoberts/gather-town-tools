@@ -14,10 +14,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src=auto-upload-poster-room.js></script>
 
-    <form method="POST" action="/submit-form">
+    <form method="POST" action="/submit-form" enctype="multipart/form-data">
       <input type="text" name="username" />
       <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-      <input class="form-control" type="file" id="formFileMultiple" name="images" multiple />
+      <input class="form-control" type="file" id="formFileMultiple" name="multiple_images" multiple />
       <input type="submit" />
   </form>
   </body>
