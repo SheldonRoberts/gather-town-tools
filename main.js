@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const uploader = require('./auto-upload-poster-room')
 const app = express();
 const PORT = process.env.PORT || 3000;
 var upload = multer({ dest: 'uploads/' })
@@ -9,9 +10,9 @@ app.use(express.urlencoded({
 }))
 
 app.post('/profile', upload.array('photos', 12), function (req, res, next) {
-  console.log(req.body);
-  console.log(req.files);
-  res.json({ message: "Successfully uploaded files" });
+
+  uploader.uploadFiles([req.files[0].path]).then(console.log);
+  res.json({ message: "done" });
   // req.files is array of `photos` files
   // req.body will contain the text fields, if there were any
 })

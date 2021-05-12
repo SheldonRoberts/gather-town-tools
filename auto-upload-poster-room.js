@@ -46,6 +46,7 @@ const BASE_MAP = {
 
 // takes local files, uploads them to Gather's storage
 const uploadFiles = async (filePaths) => {
+	console.log(filePaths + '------------------------');
 	const posterLinks = (
 		await Promise.all(
 			filePaths.map(async (path) => {
@@ -166,3 +167,7 @@ const run = () => {
 	writeMap(posterData);
 	console.log('ran!')
 }
+
+module.exports ={
+        uploadFiles
+    }
