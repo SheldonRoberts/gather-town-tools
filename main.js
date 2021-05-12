@@ -19,6 +19,7 @@ app.post('/submit-form', (req, res) => {
   const images = req.body.images
   console.log(username)
   console.log(images)
+  console.log(typeof images[0])
   res.redirect('/submited')
   res.end()
 })
