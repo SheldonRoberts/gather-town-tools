@@ -16,7 +16,9 @@ app.get('/submited',function(req,res) {
 
 app.post('/submit-form', (req, res) => {
   const username = req.body.username
+  const images = req.body.images
   console.log(username)
+  console.log(images)
   res.redirect('/submited')
   res.end()
 })
