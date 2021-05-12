@@ -21,13 +21,7 @@ const storage = multer.diskStorage({
     }
 });
 
-app.get('/',function(req,res) {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/submited',function(req,res) {
-  res.sendFile(__dirname + '/success.html');
-});
+app.listen(PORT, () => console.log("listening on port " + PORT))
 
 /*
 app.post('/submit-form', (req, res) => {
@@ -41,24 +35,25 @@ app.post('/submit-form', (req, res) => {
 })
 
 */
-app.post('/', (req, res) => {
+app.post('/upload-multiple-images', (req, res) => {
     // 10 is the limit I've defined for number of uploaded files at once
     // 'multiple_images' is the name of our file input field
     let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
 
     upload(req, res, function(err) {
-      if (req.fileValidationError) {
-          return res.send(req.fileValidationError);
-      }
-      else if (!req.file) {
-         return res.send('Please select an image to upload');
-      }
-      else if (err instanceof multer.MulterError) {
-         return res.send(err);
-      }
-      else if (err) {
-         return res.send(err);
-      }
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }
+        else if (!req.file) {
+            return res.send('Please select an image to upload');
+        }
+        else if (err instanceof multer.MulterError) {
+            return res.send(err);
+        }
+        else if (err) {
+            return res.send(err);
+        }
+
 
         let result = "You have uploaded these images: <hr />";
         const files = req.files;
@@ -72,5 +67,3 @@ app.post('/', (req, res) => {
         res.send(result);
     });
 });
-
-app.listen(PORT, () => console.log("listening on port " + PORT))
