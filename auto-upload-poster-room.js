@@ -82,7 +82,7 @@ const uploadFiles = async (filePaths, space_id_code) => {
 };
 
 // takes basic poster data, and generates the map from it
-const writeMap = async (posterData, space_id_code) => {
+const writeMap = async (posterData, space_id_code, apiKey) => {
 	let impassable = {}; // maps r,c to true if impassable
 	let posters = [];
 	let privateSpaces = [];
@@ -164,7 +164,7 @@ const writeMap = async (posterData, space_id_code) => {
 	}
 
 	await axios.post("https://gather.town/api/setMap", {
-		apiKey: API_KEY,
+		apiKey: apiKey,
 		spaceId: space_id_code,
 		mapId: MAP_ID,
 		mapContent: Object.assign(BASE_MAP, {
