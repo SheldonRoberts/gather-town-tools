@@ -37,7 +37,7 @@ app.post('/profile', upload.array('photos', 12), function (req, res, next) {
   }
 
   uploader.uploadFiles(paths, req.body.space.replace('/', '\\')).then(generatePosters);
-  res.json({ message: 'done' });
+  res.redirect('/success');
   // req.files is array of `photos` files
   // req.body will contain the text fields, if there were any
 })
@@ -47,4 +47,8 @@ app.listen(PORT, () => console.log("listening on port " + PORT))
 
 app.get('/',function(req,res) {
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/success',function(req,res) {
+  res.sendFile(__dirname + '/success.html');
 });
