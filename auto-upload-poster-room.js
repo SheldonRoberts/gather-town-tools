@@ -45,7 +45,7 @@ const BASE_MAP = {
 };
 
 // takes local files, uploads them to Gather's storage
-const uploadFiles = async (filePaths) => {
+const uploadFiles = async (filePaths, space_id_code) => {
 	console.log(filePaths + '------------------------');
 	const posterLinks = (
 		await Promise.all(
@@ -60,7 +60,7 @@ const uploadFiles = async (filePaths) => {
 									// "http://localhost:3000/api/uploadImage",
 									{
 										bytes: data,
-										spaceId: SPACE_ID,
+										spaceId: space_id_code,
 									},
 									{ maxContentLength: Infinity, maxBodyLength: Infinity }
 								)
@@ -82,7 +82,7 @@ const uploadFiles = async (filePaths) => {
 };
 
 // takes basic poster data, and generates the map from it
-const writeMap = async (posterData) => {
+const writeMap = async (posterData, space_id_code) => {
 	let impassable = {}; // maps r,c to true if impassable
 	let posters = [];
 	let privateSpaces = [];
@@ -165,7 +165,7 @@ const writeMap = async (posterData) => {
 
 	await axios.post("https://gather.town/api/setMap", {
 		apiKey: API_KEY,
-		spaceId: SPACE_ID,
+		spaceId: space_id_code,
 		mapId: MAP_ID,
 		mapContent: Object.assign(BASE_MAP, {
 			objects: BASE_MAP.objects.concat(posters),
