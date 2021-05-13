@@ -23,7 +23,7 @@ const posterData = [...Array(24).keys()].map((i) => {
 	};
 });
 
-const BASE_MAP = {
+var BASE_MAP = {
 	id: MAP_ID,
 	backgroundImagePath:
 		"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/maps%2F8225d335-2e81-4264-a94f-5be4e31b5f63?alt=media&token=0d6c2671-1a65-4e2d-83f5-46da93acb82b",
@@ -82,7 +82,7 @@ const uploadFiles = async (filePaths, space_id_code) => {
 };
 
 // takes basic poster data, and generates the map from it
-const writeMap = async (posterData, space_id_code, apiKey) => {
+const writeMap = async (posterData, space_id_code, apiKey, map_name) => {
 	let impassable = {}; // maps r,c to true if impassable
 	let posters = [];
 	let privateSpaces = [];
@@ -163,10 +163,11 @@ const writeMap = async (posterData, space_id_code, apiKey) => {
 		}
 	}
 
+	BASE_MAP.id = map_name
 	await axios.post("https://gather.town/api/setMap", {
 		apiKey: apiKey,
 		spaceId: space_id_code,
-		mapId: MAP_ID,
+		mapId: map_name,
 		mapContent: Object.assign(BASE_MAP, {
 			objects: BASE_MAP.objects.concat(posters),
 			spaces: privateSpaces,

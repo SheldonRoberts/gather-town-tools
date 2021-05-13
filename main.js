@@ -33,7 +33,7 @@ app.post('/profile', upload.array('photos', 12), function (req, res, next) {
       			"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2F9ea396a7-924e-470b-ad4d-c40b1abe761a?alt=media&token=608596ac-9fd1-45ed-a8ae-5439495ddf39",
       	});
     }
-    uploader.writeMap(posterData, req.body.space.replace('/', '\\'), req.body.key);
+    uploader.writeMap(posterData, req.body.space.replace('/', '\\'), req.body.key, req.body.roomname);
   }
 
   uploader.uploadFiles(paths, req.body.space.replace('/', '\\')).then(generatePosters);
