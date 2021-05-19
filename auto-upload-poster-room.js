@@ -1,7 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
 
-const { SPACE_ID, API_KEY } = require("./config");
 const MAP_ID = "custom-entrance";
 const WIDTH = 94;
 const HEIGHT = 57;
