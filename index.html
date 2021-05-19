@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test Script</title>
+</head>
+
+<body class="bg-light">
+  <div class="jumbotron jumbotron-fluid " style="background-color:#007C41">
+    <div class="container text-center">
+      <h1 class="display-4" style="color:#FFDB05">Gather.town Poster Room Maker</h1>
+      <p class="lead text-light">Upload a set of posters to be added to the poster room</p>
+    </div>
+  </div>
+  <!--Bootstrap -->
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <div class="d-flex justify-content-center">
+
+    <form action="/profile" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>API key</label>
+        <input type="text" class="form-control" name="key" placeholder="">
+        <small id="emailHelp" class="form-text text-muted">You can generate an API key <a href="https://gather.town/apiKeys">here</a></small>
+        <br><br>
+      </div>
+      <div class="form-group">
+        <label>Space ID</label>
+        <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name">
+        <small id="emailHelp" class="form-text text-muted">The space ID is found at the end of the room's url</small>
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Room Name</label>
+        <input type="text" class="form-control" name="roomname" placeholder="">
+        <small id="emailHelp" class="form-text text-muted">Give the room a name</small>
+        <br><br>
+      </div>
+      <label for="formFileMultiple" class="form-label">Upload Posters (PNG or JPEG)</label>
+      <input class="form-control" type="file" id="formFileMultiple" name="photos" style="width:400px" multiple /><br>
+      <button type="submit" class="btn btn-outline-primary">Make Room</button>
+
+    </form>
+  </div>
+</body>
+
+</html>
