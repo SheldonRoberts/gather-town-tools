@@ -45,7 +45,6 @@ var BASE_MAP = {
 
 // takes local files, uploads them to Gather's storage
 const uploadFiles = async (filePaths, space_id_code) => {
-	console.log(filePaths + '------------------------');
 	const posterLinks = (
 		await Promise.all(
 			filePaths.map(async (path) => {

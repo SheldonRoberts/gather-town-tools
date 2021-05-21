@@ -4,12 +4,12 @@ var XLSX = require('xlsx');
 // The names of the seperate sheets in the document must match these
 const ROOM_SHEET_NAME = 'rooms';
 const ATTENDEES_SHEET_NAME = 'attendees'
-const TABLES_SHEET_NAME = 'tables/teams'
+const TABLES_SHEET_NAME = 'tablesteams'
 
 const logSheet = (filename) => {
   var sheets = XLSX.readFile('uploads/' + filename);
   var sheet_name_list = sheets.SheetNames;
-  var data = XLSX.utils.sheet_to_json(sheets.Sheets[sheet_name_list[0]]);
+  var data = XLSX.utils.sheet_to_json(sheets.Sheets[sheet_name_list[2]]);
   console.log(sheet_name_list, data);
 }
 
