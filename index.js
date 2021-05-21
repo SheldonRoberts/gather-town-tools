@@ -1,27 +1,32 @@
 const express = require('express');
 const multer = require('multer');
 const uploader = require('./auto-upload-poster-room');
+const sheetReader = require('./eventsheet-reader');
+const mapUploader = require('./map-uploader');
 const app = express();
 const PORT = process.env.PORT || 3000;
 var upload = multer({ dest: 'uploads/' })
-
 
 app.use(express.urlencoded({
   extended: true
 }))
 
-app.post('/profile', upload.array('photos', 28), function (req, res, next) {
-
+app.post('/submit-request', upload.fields([{
+  name: 'photos', maxcount: 24},
+  {name: 'eventsheet', maxcount: 1}]), function (req, res, next) {
+  console.log('here')
   let paths = []
-  for (const file of req.files) {
+  console.log(req.files)
+  for (const file of req.files.photos) {
     paths.push(file.path)
   }
 
+  //mapUploader.getMapJson(req.body.key, req.body.space.replace('/', '\\'), req.body.roomname)
+  mapUploader.makeMap(req.body.key, req.body.space.replace('/', '\\'), req.body.roomname);
+
   const generatePosters = (links) => {
-    console.log(links)
     let posterData = [];
-    for (const file of req.files) {
-      console.log('loop ' + links[file.path])
+    for (const file of req.files.photos) {
       posterData.push({
       		posterImg: links[file.path],
       		posterPreview: links[file.path],
@@ -33,13 +38,11 @@ app.post('/profile', upload.array('photos', 28), function (req, res, next) {
       			"https://cdn.gather.town/v0/b/gather-town.appspot.com/o/assets%2F9ea396a7-924e-470b-ad4d-c40b1abe761a?alt=media&token=608596ac-9fd1-45ed-a8ae-5439495ddf39",
       	});
     }
-    uploader.writeMap(posterData, req.body.space.replace('/', '\\'), req.body.key, req.body.roomname);
+    //uploader.writeMap(posterData, req.body.space.replace('/', '\\'), req.body.key, req.body.roomname);
   }
 
-  uploader.uploadFiles(paths, req.body.space.replace('/', '\\')).then(generatePosters);
+  //uploader.uploadFiles(paths, req.body.space.replace('/', '\\')).then(generatePosters);
   res.redirect('/success');
-  // req.files is array of `photos` files
-  // req.body will contain the text fields, if there were any
 })
 
 

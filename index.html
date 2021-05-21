@@ -26,25 +26,27 @@
 
   <div class="d-flex justify-content-center">
 
-    <form action="/profile" method="post" enctype="multipart/form-data">
+    <form action="/submit-request" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label>API key</label>
         <input type="text" class="form-control" name="key" placeholder="">
-        <small id="emailHelp" class="form-text text-muted">You can generate an API key <a href="https://gather.town/apiKeys">here</a></small>
+        <small  class="form-text text-muted">You can generate an API key <a href="https://gather.town/apiKeys">here</a></small>
         <br><br>
       </div>
       <div class="form-group">
         <label>Space ID</label>
         <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name">
-        <small id="emailHelp" class="form-text text-muted">The space ID is found at the end of the room's url</small>
+        <small class="form-text text-muted">The space ID is found at the end of the room's url</small>
       </div>
       <br>
       <div class="form-group">
         <label>Room Name</label>
         <input type="text" class="form-control" name="roomname" placeholder="">
-        <small id="emailHelp" class="form-text text-muted">Give the room a name</small>
+        <small class="form-text text-muted">Give the room a name</small>
         <br><br>
       </div>
+      <label for="formFileMultiple" class="form-label">Upload Event .XLSL</label>
+      <input class="form-control" type="file" name="eventsheet" style="width:400px"/><br>
       <label for="formFileMultiple" class="form-label">Upload Posters (PNG or JPEG)</label>
       <input class="form-control" type="file" id="formFileMultiple" name="photos" style="width:400px" multiple /><br>
       <button type="submit" class="btn btn-outline-primary">Make Room</button>
