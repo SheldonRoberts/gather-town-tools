@@ -6,13 +6,13 @@ const MAP_ID = "Test Room";
 const WIDTH = 90;
 const HEIGHT = 57;
 
-const makeMap = async (apiKey, spaceId, map_name, posters, titles) => {
+const makeMap = async (apiKey, spaceId, map_name, stations) => {
   let privateSpaces=[]
   await axios.post("https://gather.town/api/setMap", {
     apiKey: apiKey,
     spaceId: spaceId,
     mapId: map_name,
-    mapContent: template.defineMap(posters, titles),
+    mapContent: template.defineMap(stations),
   });
 }
 

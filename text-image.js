@@ -1,5 +1,7 @@
 const textToImage = require('text-to-image');
 const ImageDataURI = require('image-data-uri');
+const fs = require('fs-extra');
+
 
 const imageFromText = async (text, filename) => {
   textToImage.generate(text, {
@@ -10,9 +12,22 @@ const imageFromText = async (text, filename) => {
     bgColor: "#7D9AAA",
     textColor: "#000000"
   }).then(function(dataURI) {
-    ImageDataURI.outputFile(dataURI, 'Images/' + filename);
+    saveFile(dataURI, 'Images/' + filename);
   });
 
 }
+
+function saveFile(dataURI, filePath) {
+		filePath = filePath || './';
+		return new Promise((resolve, reject) => {
+			let imageDecoded = ImageDataURI.decode(dataURI);
+			fs.outputFile(filePath, imageDecoded.dataBuffer, err => {
+				if (err) {
+					return reject('ImageDataURI :: Error :: ' + JSON.stringify(err, null, 4));
+				}
+				resolve(filePath);
+			});
+		});
+	}
 
 exports.imageFromText = imageFromText;

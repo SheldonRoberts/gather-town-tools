@@ -3,27 +3,51 @@ const uploader = require('./auto-upload-poster-room');
 const mapUploader = require('./map-uploader');
 const fs = require('fs');
 
-const setupSpace = async (apiKey, spaceId, mapId, tables, paths) => {
-  posterTitles = generateTitles(tables);
-  // need to wait for files to save
-  // if the image files are not found, likely need to increase the delay
-  await delay(500);
-  renameTitles(posterTitles);
-  links = await uploader.uploadFiles(paths, spaceId);
-  posterData = generatePosters(Object.values(links));
-  titleLinks = await uploader.uploadFiles(posterTitles, spaceId);
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
-  mapUploader.makeMap(apiKey, spaceId, mapId, posterData, titleLinks);
+const setupSpace = async (apiKey, spaceId, mapId, tables, paths) => {
+  await generateStations(paths, tables).then((stations) => {
+    mapUploader.makeMap(apiKey, spaceId, mapId, stations);
+  });
 }
 
-// delay function to allow time for processes to run
-// could probably find a better solution
-const delay = ms => new Promise(res => setTimeout(res, ms));
+// create a station object
+// Stations are a small area that contains a poster, title, etc for each presentation
+const generateStations = async (paths, tables) => {
+
+  let stations = [];
+  // turn the text into .png images
+  let titles = generateTitles(tables);
+  let presenters = generatePresenters(tables);
+  await delay(2000);
+  // upload the .png files to gather.town urls
+  const data = await Promise.all([
+    uploader.uploadFiles(titles, spaceId),
+    uploader.uploadFiles(presenters, spaceId),
+    uploader.uploadFiles(paths, spaceId)
+   ]);
+
+  var titleLinks = Object.values(data[0]),
+      presenterLinks = Object.values(data[1]),
+      posterLinks = data[2];
+  let posters = generatePosters(Object.values(posterLinks));
+  // create the list of objects
+  const maxLength = Math.max(titles.length, presenters.length, posters.length);
+  for(var i = 0; i <maxLength; i++) {
+    stations.push({
+      title: titleLinks[i],
+      presenter: presenterLinks[i],
+      poster: posters[i]
+    });
+  }
+  return stations;
+}
+
 
 // Titles must be uploaded as png images of text
 const generateTitles = (tables) => {
   let titles = [];
-  i = 0;
+  let i = 0;
   for (const table of tables) {
     // changes to the font and colors are done in text-image.js
     textImage.imageFromText(table.title, "title_"+i);
@@ -31,6 +55,19 @@ const generateTitles = (tables) => {
     i++;
   }
   return titles;
+}
+
+// Should combine this with titles into a table object
+const generatePresenters = (tables) => {
+  let presenters = [];
+  let i = 0;
+  for (const table of tables) {
+    // changes to the font and colors are done in text-image.js
+    textImage.imageFromText(table['presenter name'], "presenter_"+i);
+    presenters.push("Images/presenter_" + i);
+    i++;
+  }
+  return presenters;
 }
 
 // makes a poster object JSON using image links
@@ -46,16 +83,6 @@ const generatePosters = (links) => {
     });
   }
   return posterData;
-}
-
-// For some reason the gather.town API wants no extension on the png
-const renameTitles = async (titles) => {
-  i = 0;
-  while (i < 6) {
-    fs.rename("Images/title_"+i + '.png', "Images/title_"+i);
-    i++;
-  }
-  return titles;
 }
 
 exports.setupSpace = setupSpace;
