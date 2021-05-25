@@ -9,12 +9,11 @@ const imageFromText = async (text, filename) => {
     customHeight: 32,
     fontSize: 18,
     margin: 1,
-    bgColor: "#7D9AAA",
-    textColor: "#000000"
-  }).then(function(dataURI) {
+    bgColor: "#004250",
+    textColor: "#7AB800"
+  }).then(async function(dataURI) {
     saveFile(dataURI, 'Images/' + filename);
   });
-
 }
 
 function saveFile(dataURI, filePath) {

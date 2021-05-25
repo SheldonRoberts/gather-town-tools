@@ -8,6 +8,7 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 const setupSpace = async (apiKey, spaceId, mapId, tables, paths) => {
   await generateStations(paths, tables).then((stations) => {
     mapUploader.makeMap(apiKey, spaceId, mapId, stations);
+    //mapUploader.getMapJson(apiKey, spaceId, mapId);
   });
 }
 
@@ -17,9 +18,11 @@ const generateStations = async (paths, tables) => {
 
   let stations = [];
   // turn the text into .png images
-  let titles = generateTitles(tables);
-  let presenters = generatePresenters(tables);
-  await delay(2000);
+  let titles = await generateTitles(tables);
+  let presenters = await generatePresenters(tables);
+  // this is needed. Not sure why
+  await delay(5);
+
   // upload the .png files to gather.town urls
   const data = await Promise.all([
     uploader.uploadFiles(titles, spaceId),
@@ -37,7 +40,9 @@ const generateStations = async (paths, tables) => {
     stations.push({
       title: titleLinks[i],
       presenter: presenterLinks[i],
-      poster: posters[i]
+      poster: posters[i],
+      video: tables[i].video,
+      website: tables[i].URL,
     });
   }
   return stations;
@@ -45,7 +50,7 @@ const generateStations = async (paths, tables) => {
 
 
 // Titles must be uploaded as png images of text
-const generateTitles = (tables) => {
+const generateTitles = async (tables) => {
   let titles = [];
   let i = 0;
   for (const table of tables) {
@@ -58,7 +63,7 @@ const generateTitles = (tables) => {
 }
 
 // Should combine this with titles into a table object
-const generatePresenters = (tables) => {
+const generatePresenters = async (tables) => {
   let presenters = [];
   let i = 0;
   for (const table of tables) {
