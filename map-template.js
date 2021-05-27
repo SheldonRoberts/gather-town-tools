@@ -2155,119 +2155,119 @@ const defineMap = (stations) => {
       "scale": 1,
       "id": "cXkvJ7ponErutgoPhac1_8ca6a3f5-e4a1-4146-92db-edd5c34f9bd0"
     }, {
+      "scale": 1,
       "orientation": 0,
-      "_name": "",
       "color": "default",
-      "width": 3,
+      "_tags": ["Custom"],
       "properties": {
-        "video": stations[0].video
+        "message": "Click Link To Visit: " + stations[0].video
       },
-      "height": 2,
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
       "y": 22,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "x": 7,
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
-      "templateId": "bIhOGhjgBKYlYj6ETAUuK",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
-      "scale": 1,
-      "_tags": ["Custom"],
-      "id": "bIhOGhjgBKYlYj6ETAUuK_2216d69d-f676-4296-b12a-313b43529da0",
-      "type": 3,
-      "distThreshold": "0"
-    }, {
-      "orientation": 0,
-      "_name": "",
-      "color": "default",
-      "width": 3,
-      "properties": {
-        "video": stations[1].video
-      },
       "height": 2,
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
+      "color": "default",
+      "_tags": ["Custom"],
+      "properties": {
+        "message": "Click Link To Visit: " + stations[1].video
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
       "y": 22,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "x": 19,
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
-      "templateId": "bIhOGhjgBKYlYj6ETAUuK",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
-      "scale": 1,
-      "_tags": ["Custom"],
-      "id": "bIhOGhjgBKYlYj6ETAUuK_2216d69d-f676-4296-b12a-313b43529da0",
-      "type": 3,
-      "distThreshold": "0"
-    }, {
-      "orientation": 0,
-      "_name": "",
-      "color": "default",
-      "width": 3,
-      "properties": {
-        "video": stations[2].video
-      },
       "height": 2,
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
+      "color": "default",
+      "_tags": ["Custom"],
+      "properties": {
+        "message": "Click Link To Visit: " + stations[2].video
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
       "y": 22,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "x": 31,
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
-      "templateId": "bIhOGhjgBKYlYj6ETAUuK",
+      "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
-      "scale": 1,
-      "_tags": ["Custom"],
-      "id": "bIhOGhjgBKYlYj6ETAUuK_2216d69d-f676-4296-b12a-313b43529da0",
-      "type": 3,
-      "distThreshold": "0"
+      "_name": ""
     }, {
-      "id": "iERFgGllXDRWCCyJoUFYD_25614e78-c4ad-4cb0-8db7-f0f416cff63b",
+      "scale": 1,
       "orientation": 0,
-      "y": 22,
-      "height": 2,
-      "width": 3,
-      "properties": {
-        "url": stations[0].website
-      },
-      "distThreshold": "0",
-      "_name": "",
       "color": "default",
       "_tags": ["Custom"],
-      "type": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/RswiodoyXkOx8qyWLMFGeE",
+      "properties": {
+        "message": "Click Link To Visit: " + stations[0].website
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
+      "y": 22,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "x": 11,
-      "scale": 1,
-      "templateId": "iERFgGllXDRWCCyJoUFYD",
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/drr7TdK5Fviqu7nEmsIKut"
-    }, {
-      "id": "iERFgGllXDRWCCyJoUFYD_25614e78-c4ad-4cb0-8db7-f0f416cff63b",
-      "orientation": 0,
-      "y": 22,
       "height": 2,
-      "width": 3,
-      "properties": {
-        "url": stations[1].website
-      },
-      "distThreshold": "0",
-      "_name": "",
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
       "color": "default",
       "_tags": ["Custom"],
-      "type": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/RswiodoyXkOx8qyWLMFGeE",
+      "properties": {
+        "message": "Click Link To Visit: " + stations[1].website
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
+      "y": 22,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "x": 23,
-      "scale": 1,
-      "templateId": "iERFgGllXDRWCCyJoUFYD",
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/drr7TdK5Fviqu7nEmsIKut"
-    }, {
-      "id": "iERFgGllXDRWCCyJoUFYD_25614e78-c4ad-4cb0-8db7-f0f416cff63b",
-      "orientation": 0,
-      "y": 22,
       "height": 2,
-      "width": 3,
-      "properties": {
-        "url": stations[2].website
-      },
-      "distThreshold": "0",
-      "_name": "",
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
       "color": "default",
       "_tags": ["Custom"],
-      "type": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/RswiodoyXkOx8qyWLMFGeE",
+      "properties": {
+        "message": "Click Link To Visit: " + stations[2].website
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
+      "y": 22,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "x": 35,
-      "scale": 1,
-      "templateId": "iERFgGllXDRWCCyJoUFYD",
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/drr7TdK5Fviqu7nEmsIKut"
+      "height": 2,
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
+      "_name": ""
     }, {
       "id": "pC1j6Kjdjg9AkB1ih1GA-_b78de906-e4f3-4852-a4ab-a1121d6d8c6a",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/5jNSKZWt6Kil2LcWGLGGQK",
@@ -2605,119 +2605,119 @@ const defineMap = (stations) => {
       "orientation": 0,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/t6tkQDdquKcEh5Fna8qfwE"
     }, {
+      "scale": 1,
       "orientation": 0,
-      "_name": "",
       "color": "default",
-      "width": 3,
+      "_tags": ["Custom"],
       "properties": {
-        "video": stations[3].video
+        "message": "Click Link To Visit: " + stations[3].video
       },
-      "height": 2,
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
       "y": 34,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "x": 7,
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
-      "templateId": "bIhOGhjgBKYlYj6ETAUuK",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
-      "scale": 1,
-      "_tags": ["Custom"],
-      "id": "bIhOGhjgBKYlYj6ETAUuK_2216d69d-f676-4296-b12a-313b43529da0",
-      "type": 3,
-      "distThreshold": "0"
-    }, {
-      "orientation": 0,
-      "_name": "",
-      "color": "default",
-      "width": 3,
-      "properties": {
-        "video": stations[4].video
-      },
       "height": 2,
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
+      "color": "default",
+      "_tags": ["Custom"],
+      "properties": {
+        "message": "Click Link To Visit: " + stations[4].video
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
       "y": 34,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "x": 19,
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
-      "templateId": "bIhOGhjgBKYlYj6ETAUuK",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
-      "scale": 1,
-      "_tags": ["Custom"],
-      "id": "bIhOGhjgBKYlYj6ETAUuK_2216d69d-f676-4296-b12a-313b43529da0",
-      "type": 3,
-      "distThreshold": "0"
-    }, {
-      "orientation": 0,
-      "_name": "",
-      "color": "default",
-      "width": 3,
-      "properties": {
-        "video": stations[5].video
-      },
       "height": 2,
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
+      "color": "default",
+      "_tags": ["Custom"],
+      "properties": {
+        "message": "Click Link To Visit: " + stations[5].video
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
       "y": 34,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "x": 31,
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
-      "templateId": "bIhOGhjgBKYlYj6ETAUuK",
+      "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
-      "scale": 1,
-      "_tags": ["Custom"],
-      "id": "bIhOGhjgBKYlYj6ETAUuK_2216d69d-f676-4296-b12a-313b43529da0",
-      "type": 3,
-      "distThreshold": "0"
+      "_name": ""
     }, {
-      "id": "iERFgGllXDRWCCyJoUFYD_25614e78-c4ad-4cb0-8db7-f0f416cff63b",
+      "scale": 1,
       "orientation": 0,
-      "y": 34,
-      "height": 2,
-      "width": 3,
-      "properties": {
-        "url": stations[3].website
-      },
-      "distThreshold": "0",
-      "_name": "",
       "color": "default",
       "_tags": ["Custom"],
-      "type": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/RswiodoyXkOx8qyWLMFGeE",
+      "properties": {
+        "message": "Click Link To Visit: " + stations[3].website
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
+      "y": 34,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "x": 11,
-      "scale": 1,
-      "templateId": "iERFgGllXDRWCCyJoUFYD",
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/drr7TdK5Fviqu7nEmsIKut"
-    }, {
-      "id": "iERFgGllXDRWCCyJoUFYD_25614e78-c4ad-4cb0-8db7-f0f416cff63b",
-      "orientation": 0,
-      "y": 34,
       "height": 2,
-      "width": 3,
-      "properties": {
-        "url": stations[4].website
-      },
-      "distThreshold": "0",
-      "_name": "",
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
       "color": "default",
       "_tags": ["Custom"],
-      "type": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/RswiodoyXkOx8qyWLMFGeE",
+      "properties": {
+        "message": "Click Link To Visit: " + stations[4].website
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
+      "y": 34,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "x": 23,
-      "scale": 1,
-      "templateId": "iERFgGllXDRWCCyJoUFYD",
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/drr7TdK5Fviqu7nEmsIKut"
-    }, {
-      "id": "iERFgGllXDRWCCyJoUFYD_25614e78-c4ad-4cb0-8db7-f0f416cff63b",
-      "orientation": 0,
-      "y": 34,
       "height": 2,
-      "width": 3,
-      "properties": {
-        "url": stations[5].website
-      },
-      "distThreshold": "0",
-      "_name": "",
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
+      "_name": ""
+    }, {
+      "scale": 1,
+      "orientation": 0,
       "color": "default",
       "_tags": ["Custom"],
-      "type": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/RswiodoyXkOx8qyWLMFGeE",
+      "properties": {
+        "message": "Click Link To Visit: " + stations[5].website
+      },
+      "width": 3,
+      "templateId": "qZaWIq0GpeMy7MoZT-w1K",
+      "id": "qZaWIq0GpeMy7MoZT-w1K_d31095c7-e033-45d2-a11d-164b3da7c3ab",
+      "y": 34,
+      "distThreshold": 0,
+      "type": 6,
+      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "x": 35,
-      "scale": 1,
-      "templateId": "iERFgGllXDRWCCyJoUFYD",
-      "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/drr7TdK5Fviqu7nEmsIKut"
+      "height": 2,
+      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
+      "_name": ""
     }, {
       "scale": 1,
       "color": "#d9a066",
