@@ -25,8 +25,9 @@ app.post('/submit-request', upload.fields([{
     mapId = req.body.roomname;
 
     // turn the eventsheet into JSON
-    tables = sheetReader.tablesToJson(req.files.eventsheet[0].filename);
-    //... rooms
+    const sheet = req.files.eventsheet[0].filename;
+    tables = sheetReader.tablesToJson(sheet);
+    rooms = sheetReader.roomsToJson(sheet);
     //... attendees
 
     // save the paths of the poster images for later access
@@ -36,7 +37,7 @@ app.post('/submit-request', upload.fields([{
     }
 
     // generate the space
-    spaceControl.setupSpace(apiKey, spaceId, mapId, tables, paths);
+    spaceControl.setupSpace(apiKey, spaceId, mapId, tables, rooms, paths);
 
     res.redirect('/success');
   });

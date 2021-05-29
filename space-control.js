@@ -5,10 +5,106 @@ const fs = require('fs');
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-const setupSpace = async (apiKey, spaceId, mapId, tables, paths) => {
-  await generateStations(paths, tables).then((stations) => {
-    mapUploader.makeMap(apiKey, spaceId, mapId, stations);
+const emptyStation = {
+  poster: {
+    undefined
+  },
+}
+
+const door1 = [
+  [3, 26],
+  [3, 25],
+  [3, 24],
+]
+const door2 = [
+  [14, 10],
+  [15, 10],
+]
+const door3 = [
+  [29, 10],
+  [30, 10],
+]
+const door4 = [
+  [41, 24],
+  [41, 25],
+  [41, 26],
+]
+
+const setupSpace = async (apiKey, spaceId, mapId, tables, rooms, paths) => {
+  await generateStations(paths, tables).then(async (stations) => {
+    //mapUploader.makeMap(apiKey, spaceId, mapId, stations);
     //mapUploader.getMapJson(apiKey, spaceId, mapId);
+
+    for (const room of rooms) {
+      roomStations = [
+        stations.find(x => x.id == room.table1) || emptyStation,
+        stations.find(x => x.id == room.table2) || emptyStation,
+        stations.find(x => x.id == room.table3) || emptyStation,
+        stations.find(x => x.id == room.table4) || emptyStation,
+        stations.find(x => x.id == room.table5) || emptyStation,
+        stations.find(x => x.id == room.table6) || emptyStation,
+      ];
+
+      let portals = [];
+      for (const portal of door1) {
+        portals.push({
+          "x": portal[0],
+          "y": portal[1],
+          "targetY": 25,
+          "targetX": 22,
+          "targetMap": room.door1
+        });
+      }
+      for (const portal of door2) {
+        portals.push({
+          "x": portal[0],
+          "y": portal[1],
+          "targetY": 25,
+          "targetX": 22,
+          "targetMap": room.door2
+        });
+      }
+      for (const portal of door3) {
+        portals.push({
+          "x": portal[0],
+          "y": portal[1],
+          "targetY": 25,
+          "targetX": 22,
+          "targetMap": room.door3
+        });
+      }
+      for (const portal of door4) {
+        portals.push({
+          "x": portal[0],
+          "y": portal[1],
+          "targetY": 25,
+          "targetX": 22,
+          "targetMap": room.door4
+        });
+      }
+      // make room signs
+      textImage.signFromText(room.door1, 'door1_' + room.door1, 'left');
+      textImage.signFromText(room.door2, 'door2_' + room.door2, 'center');
+      textImage.signFromText(room.door3, 'door3_' + room.door3, 'center');
+      textImage.signFromText(room.door4, 'door4_' + room.door4, 'right');
+      await delay(50);
+      doors = [
+        'Images/door1_' + room.door1,
+        'Images/door2_' + room.door2,
+        'Images/door3_' + room.door3,
+        'Images/door4_' + room.door4
+      ];
+      signs = await uploader.uploadFiles(doors, spaceId);
+
+      // make room title
+      textImage.titleFromText(room['Room Name'], room['Room Name']);
+      await delay(50);
+      room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
+      console.log(signs);
+      mapUploader.makeMap(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
+
+      console.log("Room " + room['Room Name'] + " has been completed");
+    }
   });
 }
 
@@ -28,21 +124,22 @@ const generateStations = async (paths, tables) => {
     uploader.uploadFiles(titles, spaceId),
     uploader.uploadFiles(presenters, spaceId),
     uploader.uploadFiles(paths, spaceId)
-   ]);
+  ]);
 
   var titleLinks = Object.values(data[0]),
-      presenterLinks = Object.values(data[1]),
-      posterLinks = data[2];
+    presenterLinks = Object.values(data[1]),
+    posterLinks = data[2];
   let posters = generatePosters(Object.values(posterLinks));
   // create the list of objects
   const maxLength = Math.max(titles.length, presenters.length, posters.length);
-  for(var i = 0; i <maxLength; i++) {
+  for (var i = 0; i < maxLength; i++) {
     stations.push({
       title: titleLinks[i],
       presenter: presenterLinks[i],
       poster: posters[i],
       video: tables[i].video,
       website: tables[i].URL,
+      id: tables[i]["Table ID"]
     });
   }
   return stations;
@@ -55,7 +152,7 @@ const generateTitles = async (tables) => {
   let i = 0;
   for (const table of tables) {
     // changes to the font and colors are done in text-image.js
-    textImage.imageFromText(table.title, "title_"+i);
+    textImage.imageFromText(table.title, "title_" + i);
     titles.push("Images/title_" + i);
     i++;
   }
@@ -68,7 +165,7 @@ const generatePresenters = async (tables) => {
   let i = 0;
   for (const table of tables) {
     // changes to the font and colors are done in text-image.js
-    textImage.imageFromText(table['presenter name'], "presenter_"+i);
+    textImage.imageFromText(table['presenter name'], "presenter_" + i);
     presenters.push("Images/presenter_" + i);
     i++;
   }
