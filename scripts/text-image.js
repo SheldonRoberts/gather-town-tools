@@ -1,5 +1,6 @@
 const textToImage = require('text-to-image');
 const ImageDataURI = require('image-data-uri');
+const config = require('../map templates/config');
 const fs = require('fs-extra');
 
 
@@ -17,8 +18,8 @@ const imageFromText = async (text, filename) => {
     fontSize: size,
     margin: 1,
     lineHeight: 15,
-    bgColor: "#004250",
-    textColor: "#7AB800"
+    bgColor: config.SECONDARY_COLOUR,
+    textColor: config.PRIMARY_COLOUR
   }).then(async function(dataURI) {
     saveFile(dataURI, 'Images/' + filename);
   });

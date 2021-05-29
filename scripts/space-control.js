@@ -1,34 +1,9 @@
 const textImage = require('./text-image');
 const uploader = require('./file-uploader');
 const mapUploader = require('./map-uploader');
-const fs = require('fs');
+const config = require('../map templates/config');
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
-
-const emptyStation = {
-  poster: {
-    undefined
-  },
-}
-
-const door1 = [
-  [3, 26],
-  [3, 25],
-  [3, 24],
-]
-const door2 = [
-  [14, 10],
-  [15, 10],
-]
-const door3 = [
-  [29, 10],
-  [30, 10],
-]
-const door4 = [
-  [41, 24],
-  [41, 25],
-  [41, 26],
-]
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
   await generateStations(paths, tables).then(async (stations) => {
@@ -36,16 +11,16 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
 
     for (const room of rooms) {
       roomStations = [
-        stations.find(x => x.id == room.table1) || emptyStation,
-        stations.find(x => x.id == room.table2) || emptyStation,
-        stations.find(x => x.id == room.table3) || emptyStation,
-        stations.find(x => x.id == room.table4) || emptyStation,
-        stations.find(x => x.id == room.table5) || emptyStation,
-        stations.find(x => x.id == room.table6) || emptyStation,
+        stations.find(x => x.id == room.table1) || config.BLANK_STATION,
+        stations.find(x => x.id == room.table2) || config.BLANK_STATION,
+        stations.find(x => x.id == room.table3) || config.BLANK_STATION,
+        stations.find(x => x.id == room.table4) || config.BLANK_STATION,
+        stations.find(x => x.id == room.table5) || config.BLANK_STATION,
+        stations.find(x => x.id == room.table6) || config.BLANK_STATION,
       ];
 
       let portals = [];
-      for (const portal of door1) {
+      for (const portal of config.DOOR1) {
         portals.push({
           "x": portal[0],
           "y": portal[1],
@@ -54,7 +29,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
           "targetMap": room.door1
         });
       }
-      for (const portal of door2) {
+      for (const portal of config.DOOR2) {
         portals.push({
           "x": portal[0],
           "y": portal[1],
@@ -63,7 +38,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
           "targetMap": room.door2
         });
       }
-      for (const portal of door3) {
+      for (const portal of config.DOOR3) {
         portals.push({
           "x": portal[0],
           "y": portal[1],
@@ -72,7 +47,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
           "targetMap": room.door3
         });
       }
-      for (const portal of door4) {
+      for (const portal of config.DOOR4) {
         portals.push({
           "x": portal[0],
           "y": portal[1],
@@ -86,21 +61,22 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
       textImage.signFromText(room.door2, 'door2_' + room.door2, 'center');
       textImage.signFromText(room.door3, 'door3_' + room.door3, 'center');
       textImage.signFromText(room.door4, 'door4_' + room.door4, 'right');
-      await delay(50);
       doors = [
         'Images/door1_' + room.door1,
         'Images/door2_' + room.door2,
         'Images/door3_' + room.door3,
         'Images/door4_' + room.door4
       ];
+      await delay(50);
       signs = await uploader.uploadFiles(doors, spaceId);
 
       // make room title
       textImage.titleFromText(room['Room Name'], room['Room Name']);
       await delay(50);
       room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
-      mapUploader.makeMap(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
 
+      // Generate the room
+      mapUploader.makeMap(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
       console.log("Room " + room['Room Name'] + " has been completed");
     }
   });
@@ -109,14 +85,12 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
 // create a station object
 // Stations are a small area that contains a poster, title, etc for each presentation
 const generateStations = async (paths, tables) => {
-
   let stations = [];
   // turn the text into .png images
   let titles = await generateTitles(tables);
   let presenters = await generatePresenters(tables);
-  // this is needed. Not sure why
+  // delay is needed for files to upload
   await delay(5);
-
   // upload the .png files to gather.town urls
   const data = await Promise.all([
     uploader.uploadFiles(titles, spaceId),
