@@ -1913,8 +1913,71 @@ const defineMap = (stations, portals, map_name, signs) => {
     }],
     "assets": [],
     "backgroundImagePath": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/zepMJdaAvCWOiwAsRu6vbQ",
-    "objects": [
-      {
+    "objects": [{
+      "templateId": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB",
+      "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fq3uv11eTipgAzYgC?alt=media&token=d3f03864-e3da-43b0-af7a-c2dc62c21fec",
+      "type": 0,
+      "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_0599b4f2-c991-47c1-83c0-a71cfca31d48",
+      "color": "#222034",
+      "x": 4,
+      "y": 25,
+      "properties": {},
+      "width": 1,
+      "_name": "Arrow (Chalk)",
+      "_tags": ["wayfinding", "instruction"],
+      "orientation": 3,
+      "height": 1,
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FvPHHgzelxoqAhIq3?alt=media&token=aa9387b8-62d9-42b0-adc7-3c23ace5a38d",
+      "scale": 1
+    }, {
+      "properties": {},
+      "scale": 1,
+      "y": 11,
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FSIKOyxOeioTUoDm6?alt=media&token=f97cddd7-5f24-49b4-a4a8-2fee1c0f63e2",
+      "_name": "Arrow (Chalk)",
+      "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_c8e6f5ef-4433-4a4e-95f7-e728dcd6740f",
+      "templateId": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB",
+      "width": 1,
+      "_tags": ["wayfinding", "instruction"],
+      "orientation": 2,
+      "type": 0,
+      "height": 1,
+      "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FnksDik5DOu2v6CHq?alt=media&token=5416e713-c621-4522-a1e8-0b67b3f0c162",
+      "x": 15,
+      "color": "#222034"
+    }, {
+      "orientation": 2,
+      "x": 29,
+      "scale": 1,
+      "_tags": ["wayfinding", "instruction"],
+      "templateId": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB",
+      "height": 1,
+      "type": 0,
+      "width": 1,
+      "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FnksDik5DOu2v6CHq?alt=media&token=5416e713-c621-4522-a1e8-0b67b3f0c162",
+      "_name": "Arrow (Chalk)",
+      "properties": {},
+      "color": "#222034",
+      "y": 11,
+      "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_29285efd-116e-4f84-9daf-b724e76d1fc5",
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FSIKOyxOeioTUoDm6?alt=media&token=f97cddd7-5f24-49b4-a4a8-2fee1c0f63e2"
+    }, {
+      "width": 1,
+      "x": 40,
+      "_name": "Arrow (Chalk)",
+      "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_b572b26e-1781-42c8-8122-c728b73f2ce2",
+      "y": 25,
+      "properties": {},
+      "type": 0,
+      "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FwmBrdDbsIrVQvr73?alt=media&token=2752771f-4100-4c3a-a141-098533e6f188",
+      "orientation": 1,
+      "scale": 1,
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FXs17bFGroQ6DFW6r?alt=media&token=c27943aa-4775-4288-80ab-3d6737cd190b",
+      "templateId": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB",
+      "_tags": ["wayfinding", "instruction"],
+      "height": 1,
+      "color": "#222034"
+    }, {
         "id": "i1gPOvmbzmbgShfEgn2WV_d8f6cbbd-3ace-4a43-9438-e652fddd8571",
         "orientation": 0,
         "properties": {},
@@ -2088,7 +2151,7 @@ const defineMap = (stations, portals, map_name, signs) => {
     }, {
       "templateId": "7XpXxGLS8f_eJMeEVrpXf",
       "_name": "",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xD4KYWXX6MpprtkfNdWmw4",
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "height": 5,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/dImT7w6vOdPrxvpZwAtOcg",
       "_tags": ["Custom"],
@@ -2110,7 +2173,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "scale": 1,
       "templateId": "7XpXxGLS8f_eJMeEVrpXf",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xD4KYWXX6MpprtkfNdWmw4",
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "type": 0,
       "_name": "",
       "x": 20,
@@ -2131,7 +2194,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "id": "7XpXxGLS8feJMeEVrpXf_19a94914-8bbf-4c7e-9d53-f05639f5ec38",
       "height": 5,
       "type": 0,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xD4KYWXX6MpprtkfNdWmw4",
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/dImT7w6vOdPrxvpZwAtOcg"
     }, {
       "height": 1,
@@ -2500,7 +2563,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "type": 0,
       "width": 5,
       "scale": 1,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xD4KYWXX6MpprtkfNdWmw4",
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "orientation": 0,
       "_name": ""
     }, {
@@ -2516,7 +2579,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "x": 20,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/dImT7w6vOdPrxvpZwAtOcg",
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xD4KYWXX6MpprtkfNdWmw4",
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "width": 5,
       "_tags": ["Custom"]
     }, {
@@ -2534,7 +2597,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "orientation": 0,
       "x": 32,
-      "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xD4KYWXX6MpprtkfNdWmw4"
+      "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e"
     }, {
       "properties": {},
       "templateId": "cXkvJ7ponE_rutgoPhac1",
@@ -2858,7 +2921,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "#9badb7",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FxIRAW58AKmvs7F6J?alt=media&token=7beaf1c8-591d-4cdc-8026-9c2e37307b80"
     }, {
-      "x": 22,
+      "x": 10,
       "color": "#639bff",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
       "offsetX": 0,
@@ -2895,7 +2958,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "scale": 1,
       "type": 2,
       "templateId": "Poster - 8RSUnkK2tlLxX8uX-o-Ss",
-      "x": 34,
+      "x": 22,
       "_name": "Poster",
       "color": "#639bff",
       "width": 3,
@@ -2916,8 +2979,8 @@ const defineMap = (stations, portals, map_name, signs) => {
       "scale": 1,
       "offsetX": 0,
       "offsetY": 0,
-      "y": 29,
-      "x": 10,
+      "y": 17,
+      "x": 34,
       "color": "#639bff",
       "properties": {
         "image": stations[2].poster.posterImg,
@@ -2937,7 +3000,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       },
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_5fcfe53e-3bbd-4048-92f0-0d455b344b5d",
       "offsetX": 0,
-      "x": 22,
+      "x": 10,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FiTRAoIlZ8vAqwgnG?alt=media&token=b8245888-b400-4412-a731-2d8b0296462c",
       "offsetY": 0,
       "color": "#639bff",
@@ -2963,14 +3026,14 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "#639bff",
       "type": 2,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FiTRAoIlZ8vAqwgnG?alt=media&token=b8245888-b400-4412-a731-2d8b0296462c",
-      "x": 34,
+      "x": 22,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
       "height": 2,
       "offsetY": 0
     }, {
-      "x": 10,
+      "x": 34,
       "height": 2,
-      "y": 17,
+      "y": 29,
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_f10170cb-add6-49fe-9109-4b03ed7a421a",
       "type": 2,
       "distThreshold": 3,
