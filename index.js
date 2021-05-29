@@ -1,11 +1,9 @@
 const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
-const uploader = require('./auto-upload-poster-room');
-const sheetReader = require('./eventsheet-reader');
-const mapUploader = require('./map-uploader');
+const sheetReader = require('./scripts/eventsheet-reader');
+const spaceControl = require('./scripts/space-control');
 
-const spaceControl = require('./space-control');
 const app = express();
 const PORT = process.env.PORT || 3000;
 

@@ -1,8 +1,8 @@
 const axios = require("axios");
 const fs = require("fs");
-const template = require("./map-template")
+const template = require("../map templates/map-template")
 const textImage = require('./text-image');
-const uploader = require('./auto-upload-poster-room');
+const uploader = require('./file-uploader');
 
 const MAP_ID = "Test Room";
 const WIDTH = 90;

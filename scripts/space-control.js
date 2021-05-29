@@ -1,5 +1,5 @@
 const textImage = require('./text-image');
-const uploader = require('./auto-upload-poster-room');
+const uploader = require('./file-uploader');
 const mapUploader = require('./map-uploader');
 const fs = require('fs');
 
@@ -133,10 +133,12 @@ const generateStations = async (paths, tables) => {
   // create the list of objects
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
+    posterName = presenterNames[i].replace("Images", "uploads");
+    posterName = posterName.replace(" ", "_");
     stations.push({
       title: titleLinks[i],
       presenter: presenterLinks[i],
-      poster: posters[presenterNames[i].replace("Images", "uploads")] || "",
+      poster: posters[posterName] || "",
       video: tables[i].video,
       website: tables[i].URL,
       id: tables[i]["Table ID"]
