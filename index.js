@@ -31,7 +31,6 @@ app.post('/submit-request', upload.fields([{
     // data from the form
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
-    mapId = req.body.roomname;
 
     // turn the eventsheet into JSON
     const sheet = req.files.eventsheet[0].filename;
@@ -46,7 +45,7 @@ app.post('/submit-request', upload.fields([{
     }
 
     // generate the space
-    spaceControl.setupSpace(apiKey, spaceId, mapId, tables, rooms, paths);
+    spaceControl.setupSpace(apiKey, spaceId, tables, rooms, paths);
 
     res.redirect('/success');
   });

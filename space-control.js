@@ -30,9 +30,8 @@ const door4 = [
   [41, 26],
 ]
 
-const setupSpace = async (apiKey, spaceId, mapId, tables, rooms, paths) => {
+const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
   await generateStations(paths, tables).then(async (stations) => {
-    //mapUploader.makeMap(apiKey, spaceId, mapId, stations);
     //mapUploader.getMapJson(apiKey, spaceId, mapId);
 
     for (const room of rooms) {

@@ -4,11 +4,19 @@ const fs = require('fs-extra');
 
 
 const imageFromText = async (text, filename) => {
+  let size = 18;
+  if (text.length > 32) {
+    size = 14;
+  }
+  if (text.length > 83) {
+    text = text.substring(0, 85) + "...";
+  }
   textToImage.generate(text, {
     maxWidth: 288,
     customHeight: 32,
-    fontSize: 18,
+    fontSize: size,
     margin: 1,
+    lineHeight: 15,
     bgColor: "#004250",
     textColor: "#7AB800"
   }).then(async function(dataURI) {
@@ -17,10 +25,16 @@ const imageFromText = async (text, filename) => {
 }
 
 const titleFromText = async (text, filename) => {
+  let size = 36;
+  if (text.length > 20 && text.length < 40) {
+    size = 30;
+  } else if (text.length > 40) {
+    size = 25;
+  }
   textToImage.generate(text, {
     maxWidth: 288,
-    customHeight: 32,
-    fontSize: 36,
+    customHeight: 40,
+    fontSize: size,
     margin: 1,
     bgColor: "#595652",
     textColor: "#FFFFFF",
@@ -31,10 +45,16 @@ const titleFromText = async (text, filename) => {
 }
 
 const signFromText = async (text, filename, alignment) => {
+  let size = 36;
+  if (text.length > 20 && text.length < 40) {
+    size = 30;
+  } else if (text.length > 40) {
+    size = 25;
+  }
   textToImage.generate(text, {
     maxWidth: 288,
-    customHeight: 32,
-    fontSize: 36,
+    customHeight: 40,
+    fontSize: size,
     margin: 1,
     bgColor: "#595652",
     textColor: "#222034",
