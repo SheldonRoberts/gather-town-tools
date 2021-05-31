@@ -8,8 +8,17 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
   await generateStations(paths, tables).then(async (stations) => {
     //mapUploader.getMapJson(apiKey, spaceId, mapId);
-
+    links = {};
     for (const room of rooms) {
+
+      link_id = room["Room Name"].replace(" ", "%20");
+      let i = 1;
+      for (const coord of config.SPAWNS)  {
+        name = `${link_id} Poster ${i}`;
+        links[name] = `https://gather.town/app/${spaceId.replace("\\", "/")}?spawnx=${coord[0]}&spawny=${coord[1]}&map=${link_id}`;
+        i++;
+      }
+
       roomStations = [
         stations.find(x => x.id == room.table1) || config.BLANK_STATION,
         stations.find(x => x.id == room.table2) || config.BLANK_STATION,
@@ -79,6 +88,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
       mapUploader.makeMap(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
       console.log("Room " + room['Room Name'] + " has been completed");
     }
+    console.log(links);
   });
 }
 

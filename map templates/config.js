@@ -26,6 +26,14 @@ module.exports = {
       undefined
     },
   },
+  SPAWNS: [
+    [10, 15],
+    [22, 15],
+    [34, 15],
+    [10, 27],
+    [22, 27],
+    [34, 27],
+  ],
   // The names of the sheets in the .xlsx file
   ROOM_SHEET_NAME: 'rooms',
   ATTENDEES_SHEET_NAME: 'attendees',

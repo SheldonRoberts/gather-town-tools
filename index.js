@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const sheetReader = require('./scripts/eventsheet-reader');
 const spaceControl = require('./scripts/space-control');
+const axios = require('axios');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +18,15 @@ const storage = multer.diskStorage({
   }
 })
 const upload = multer({storage: storage})
+
+const setGuestlist = async (guests) => {
+  await axios.post("https://gather.town/api/setEmailGuestlist", {
+    apiKey: apiKey,
+    spaceId: spaceId,
+    guestlist: guests,
+    overwrite: true
+  });
+}
 
 app.use(express.urlencoded({
   extended: true
@@ -33,12 +44,22 @@ app.post('/submit-request', upload.fields([{
     const sheet = req.files.eventsheet[0].filename;
     tables = sheetReader.tablesToJson(sheet);
     rooms = sheetReader.roomsToJson(sheet);
-    //... attendees
+    attendees = sheetReader.attendeesToJson(sheet);
 
     // save the paths of the poster images for later access
     let paths = []
     for (const file of req.files.photos) {
       paths.push(file.path);
+    }
+    guestlist = {}
+    for (const attendee of attendees) {
+      guestlist[attendee.Email] = {"role":attendee.Role,"name":attendee.Name}
+    }
+
+    if (typeof req.body.private !== 'undefined') {
+      setGuestlist(guestlist);
+    } else {
+      setGuestlist(null);
     }
     // generate the space
     spaceControl.setupSpace(apiKey, spaceId, tables, rooms, paths);
