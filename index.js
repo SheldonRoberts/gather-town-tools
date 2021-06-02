@@ -1,11 +1,9 @@
 const express = require('express');
+const app = express();
 const multer = require('multer');
 const sheetReader = require('./scripts/eventsheet-reader');
 const spaceControl = require('./scripts/space-control');
-const axios = require('axios');
-const fs = require('fs');
-
-const app = express();
+const gather = require('./scripts/gather-helpers');
 const PORT = process.env.PORT || 3000;
 
 // Files uploaded to multer will keep their original name, no extension
@@ -19,59 +17,42 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage: storage})
 
-const setGuestlist = async (guests) => {
-  await axios.post("https://gather.town/api/setEmailGuestlist", {
-    apiKey: apiKey,
-    spaceId: spaceId,
-    guestlist: guests,
-    overwrite: true
-  });
-}
 
 app.use(express.urlencoded({
   extended: true
 }))
 
-// Handle the form submission
+app.get('/',function(req,res) {
+  res.sendFile(__dirname + '/static/index.html');
+});
+
+app.get('/success',function(req,res) {
+  res.sendFile(__dirname + '/static/success.html');
+});
+
 app.post('/submit-request', upload.fields([{
-  // the file fields from the form which are saved to the uploads folder
   name: 'photos', maxcount: 24}, {name: 'eventsheet', maxcount: 1}]),
   function (req, res, next) {
-    // data from the form
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
+    let imagePaths = [];
+    for (const file of req.files.photos) { imagePaths.push(file.path) }
     // turn the eventsheet (.xlsx) into JSON
     const sheet = req.files.eventsheet[0].filename;
     tables = sheetReader.tablesToJson(sheet);
     rooms = sheetReader.roomsToJson(sheet);
     attendees = sheetReader.attendeesToJson(sheet);
-
-    // save the paths of the poster images for later access
-    let paths = []
-    for (const file of req.files.photos) {
-      paths.push(file.path);
-    }
-    guestlist = {}
-    for (const attendee of attendees) {
-      guestlist[attendee.Email] = {"role":attendee.Role,"name":attendee.Name}
-    }
-
+    guestlist = {};
+    for (const attendee of attendees) { guestlist[attendee.Email] = {"role":attendee.Role,"name":attendee.Name} }
+    // check if the form had 'private room' selected
     if (typeof req.body.private !== 'undefined') {
-      setGuestlist(guestlist);
+      gather.setGuestlist(guestlist);
     } else {
-      setGuestlist(null);
+      gather.setGuestlist(null); // null guestlist creates a public space
     }
     // generate the space
-    spaceControl.setupSpace(apiKey, spaceId, tables, rooms, paths);
+    spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths);
     res.redirect('/success');
-  });
-
-  app.get('/',function(req,res) {
-    res.sendFile(__dirname + '/index.html');
-  });
-
-  app.get('/success',function(req,res) {
-    res.sendFile(__dirname + '/success.html');
   });
 
   app.listen(PORT, () => console.log("listening on port " + PORT))

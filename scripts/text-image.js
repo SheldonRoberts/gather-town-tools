@@ -1,6 +1,6 @@
 const textToImage = require('text-to-image');
 const ImageDataURI = require('image-data-uri');
-const config = require('../map templates/config');
+const config = require('../config');
 const fs = require('fs-extra');
 
 

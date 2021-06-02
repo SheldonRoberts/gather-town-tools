@@ -3,24 +3,27 @@ module.exports = {
   PRIMARY_COLOUR: "#7AB800",
   SECONDARY_COLOUR: "#004250",
   // These are the coordinates of doors in the map
-  DOOR1: [
-    [3, 26],
-    [3, 25],
-    [3, 24],
+  DOORS: [
+    [ // door1
+      [3, 26], // door square 1
+      [3, 25], // door square 2
+      [3, 24], // door square 3
+    ], [ // door2 ...
+      [14, 10],
+      [15, 10],
+    ], [
+      [29, 10],
+      [30, 10],
+    ], [
+      [41, 24],
+      [41, 25],
+      [41, 26],
+    ],
   ],
-  DOOR2: [
-    [14, 10],
-    [15, 10],
-  ],
-  DOOR3: [
-    [29, 10],
-    [30, 10],
-  ],
-  DOOR4: [
-    [41, 24],
-    [41, 25],
-    [41, 26],
-  ],
+
+  DOOR_TEXT_ALIGN: ['left', 'center', 'center', 'right'],
+
+  ROOM_SPAWN: [22,25], // [x,y] for spawn of poster rooms
   BLANK_STATION: {
     poster: {
       undefined

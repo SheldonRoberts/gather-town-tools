@@ -1,9 +1,9 @@
 const textImage = require('./text-image');
-const uploader = require('./file-uploader');
+const uploader = require('./gather-helpers');
 const mapUploader = require('./map-uploader');
-const config = require('../map templates/config');
+const config = require('../config');
+const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
   await generateStations(paths, tables).then(async (stations) => {
@@ -11,79 +11,24 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
     links = {};
     for (const room of rooms) {
 
-      link_id = room["Room Name"].replace(" ", "%20");
+      links = Object.assign(links, tableLinks(room));
+      let portals = setPortals(room);
+      // find the tables that are assigned to this room
+      roomStations = [];
       let i = 1;
-      for (const coord of config.SPAWNS)  {
-        name = `${link_id} Poster ${i}`;
-        links[name] = `https://gather.town/app/${spaceId.replace("\\", "/")}?spawnx=${coord[0]}&spawny=${coord[1]}&map=${link_id}`;
+      while (room["table" + i] != undefined) {
+        roomStations.push(stations.find(x => x.id == room["table" + i]));
         i++;
       }
-
-      roomStations = [
-        stations.find(x => x.id == room.table1) || config.BLANK_STATION,
-        stations.find(x => x.id == room.table2) || config.BLANK_STATION,
-        stations.find(x => x.id == room.table3) || config.BLANK_STATION,
-        stations.find(x => x.id == room.table4) || config.BLANK_STATION,
-        stations.find(x => x.id == room.table5) || config.BLANK_STATION,
-        stations.find(x => x.id == room.table6) || config.BLANK_STATION,
-      ];
-
-      let portals = [];
-      for (const portal of config.DOOR1) {
-        portals.push({
-          "x": portal[0],
-          "y": portal[1],
-          "targetY": 25,
-          "targetX": 22,
-          "targetMap": room.door1
-        });
+      doorImages = [];
+      for (i = 1; i <= config.DOORS.length; i++) {
+        textImage.signFromText(room["door" + i], `door${i}_${room["door"+i]}`, 'left');
+        doorImages.push(`Images/door${i}_${room["door"+i]}`)
       }
-      for (const portal of config.DOOR2) {
-        portals.push({
-          "x": portal[0],
-          "y": portal[1],
-          "targetY": 25,
-          "targetX": 22,
-          "targetMap": room.door2
-        });
-      }
-      for (const portal of config.DOOR3) {
-        portals.push({
-          "x": portal[0],
-          "y": portal[1],
-          "targetY": 25,
-          "targetX": 22,
-          "targetMap": room.door3
-        });
-      }
-      for (const portal of config.DOOR4) {
-        portals.push({
-          "x": portal[0],
-          "y": portal[1],
-          "targetY": 25,
-          "targetX": 22,
-          "targetMap": room.door4
-        });
-      }
-      // make room signs
-      textImage.signFromText(room.door1, 'door1_' + room.door1, 'left');
-      textImage.signFromText(room.door2, 'door2_' + room.door2, 'center');
-      textImage.signFromText(room.door3, 'door3_' + room.door3, 'center');
-      textImage.signFromText(room.door4, 'door4_' + room.door4, 'right');
-      doors = [
-        'Images/door1_' + room.door1,
-        'Images/door2_' + room.door2,
-        'Images/door3_' + room.door3,
-        'Images/door4_' + room.door4
-      ];
-      await delay(50);
-      signs = await uploader.uploadFiles(doors, spaceId);
-
-      // make room title
       textImage.titleFromText(room['Room Name'], room['Room Name']);
       await delay(50);
+      signs = await uploader.uploadFiles(doorImages, spaceId);
       room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
-
       // Generate the room
       mapUploader.makeMap(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
       console.log("Room " + room['Room Name'] + " has been completed");
@@ -96,12 +41,10 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
 // Stations are a small area that contains a poster, title, etc for each presentation
 const generateStations = async (paths, tables) => {
   let stations = [];
-  // turn the text into .png images
   let titles = await generateTitles(tables);
   let presenters = await generatePresenters(tables);
   // delay is needed for files to upload
   await delay(5);
-  // upload the .png files to gather.town urls
   const data = await Promise.all([
     uploader.uploadFiles(titles, spaceId),
     uploader.uploadFiles(presenters, spaceId),
@@ -114,17 +57,16 @@ const generateStations = async (paths, tables) => {
     posterLinks = data[2];
 
   let posters = generatePosters(posterLinks);
-  // create the list of objects
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
     posterName = presenterNames[i].replace("Images", "uploads");
     posterName = posterName.replace(" ", "_");
     stations.push({
-      title: titleLinks[i],
-      presenter: presenterLinks[i],
+      title: titleLinks[i] || "",
+      presenter: presenterLinks[i] || "",
       poster: posters[posterName] || "",
-      video: tables[i].video,
-      website: tables[i].URL,
+      video: tables[i].video || "",
+      website: tables[i].URL || "",
       id: tables[i]["Table ID"]
     });
   }
@@ -158,7 +100,6 @@ const generatePresenters = async (tables) => {
   return presenters;
 }
 
-// makes a poster object JSON using image links
 const generatePosters = (links) => {
   files = Object.keys(links);
   let posters = {};
@@ -172,6 +113,37 @@ const generatePosters = (links) => {
     }
   }
   return posters;
+}
+
+// creates an object of links that spawn users directly at a given table
+const tableLinks = (room) => {
+  links = {}
+  link_id = room["Room Name"].replace(" ", "%20");
+  let i = 1;
+  for (const coord of config.SPAWNS) {
+    name = `${link_id} Poster ${i}`;
+    links[name] = `https://gather.town/app/${spaceId.replace("\\", "/")}?spawnx=${coord[0]}&spawny=${coord[1]}&map=${link_id}`;
+    i++;
+  }
+  return links
+}
+
+const setPortals = (room) => {
+  let portals = [];
+  let i = 1;
+  for (const door of config.DOORS) {
+    for (const portal of door) {
+      portals.push({
+        "x": portal[0],
+        "y": portal[1],
+        "targetX": config.ROOM_SPAWN[0],
+        "targetY": config.ROOM_SPAWN[1],
+        "targetMap": room['door' + i],
+      });
+    }
+    i++;
+  }
+  return portals;
 }
 
 exports.setupSpace = setupSpace;

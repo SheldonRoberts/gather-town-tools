@@ -1,5 +1,5 @@
 var XLSX = require('xlsx');
-const config = require('../map templates/config');
+const config = require('../config');
 
 const logSheet = (filename) => {
   var sheets = XLSX.readFile('uploads/' + filename);
