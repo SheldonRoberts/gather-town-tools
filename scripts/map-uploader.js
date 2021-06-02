@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-const template = require("../map templates/map-template")
+const template = require("../map templates/6-poster-room");
 
 const makeMap = async (apiKey, spaceId, map_name, stations, portals, room_title, signs) => {
   await axios.post("https://gather.town/api/setMap", {

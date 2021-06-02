@@ -37,8 +37,8 @@ const titleFromText = async (text, filename) => {
     customHeight: 40,
     fontSize: size,
     margin: 1,
-    bgColor: "#595652",
-    textColor: "#FFFFFF",
+    bgColor: config.TITLE_BG_COLOUR,
+    textColor: config.SECONDARY_COLOUR,
     textAlign:"center"
   }).then(async function(dataURI) {
     saveFile(dataURI, 'Images/' + filename);
@@ -57,7 +57,7 @@ const signFromText = async (text, filename, alignment) => {
     customHeight: 40,
     fontSize: size,
     margin: 1,
-    bgColor: "#595652",
+    bgColor: config.BG_COLOUR,
     textColor: "#222034",
     textAlign: alignment
   }).then(async function(dataURI) {

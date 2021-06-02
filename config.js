@@ -2,6 +2,8 @@
 module.exports = {
   PRIMARY_COLOUR: "#7AB800",
   SECONDARY_COLOUR: "#004250",
+  BG_COLOUR: "#ccd1da",
+  TITLE_BG_COLOUR: "#afb4bd",
   // These are the coordinates of doors in the map
   DOORS: [
     [ // door1
