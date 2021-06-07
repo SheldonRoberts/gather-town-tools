@@ -65,6 +65,26 @@ const signFromText = async (text, filename, alignment) => {
   });
 }
 
+const lobbySignFromText = async (text, filename, alignment) => {
+  let size = 36;
+  if (text.length > 20 && text.length < 40) {
+    size = 30;
+  } else if (text.length > 40) {
+    size = 25;
+  }
+  textToImage.generate(text, {
+    maxWidth: 224,
+    customHeight: 40,
+    fontSize: size,
+    margin: 1,
+    bgColor: "#847e87",
+    textColor: "#222034",
+    textAlign: alignment
+  }).then(async function(dataURI) {
+    saveFile(dataURI, 'Images/' + filename);
+  });
+}
+
 function saveFile(dataURI, filePath) {
 		filePath = filePath || './';
 		return new Promise((resolve, reject) => {
@@ -81,3 +101,4 @@ function saveFile(dataURI, filePath) {
 exports.imageFromText = imageFromText;
 exports.titleFromText = titleFromText;
 exports.signFromText = signFromText;
+exports.lobbySignFromText = lobbySignFromText;

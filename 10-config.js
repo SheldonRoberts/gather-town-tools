@@ -7,19 +7,17 @@ module.exports = {
   // These are the coordinates of doors in the map
   DOORS: [
     [ // door1
-      [3, 26], // door square 1
-      [3, 25], // door square 2
-      [3, 24], // door square 3
+      [15, 10], // door square 1
+      [16, 10], // door square 2
     ], [ // door2 ...
-      [14, 10],
-      [15, 10],
+      [27, 10],
+      [28, 10],
     ], [
-      [29, 10],
-      [30, 10],
+      [40, 10],
+      [41, 10],
     ], [
-      [41, 24],
-      [41, 25],
-      [41, 26],
+      [52, 10],
+      [53, 10],
     ],
   ],
   LOBBY_DOORS: [
@@ -40,9 +38,9 @@ module.exports = {
 
   LOBBY_SPAWN: [76, 34],
 
-  DOOR_TEXT_ALIGN: ['left', 'center', 'center', 'right'],
+  DOOR_TEXT_ALIGN: ['center', 'center', 'center', 'center'],
 
-  ROOM_SPAWN: [22,25], // [x,y] for spawn of poster rooms
+  ROOM_SPAWN: [34,25], // [x,y] for spawn of poster rooms
   BLANK_STATION: {
     poster: {
       undefined

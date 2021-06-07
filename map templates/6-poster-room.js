@@ -1,4 +1,3 @@
-const axios = require("axios");
 
 const defineMap = (stations, portals, map_name, signs) => {
   return {
@@ -2187,7 +2186,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "type": 0,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/dImT7w6vOdPrxvpZwAtOcg"
-    }, {
+    }, stations[0].video != ""? {
       "height": 1,
       "scale": 1,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
@@ -2203,7 +2202,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "type": 0,
       "x": 7,
       "orientation": 0
-    }, {
+    } : {}, stations[0].website != ""? {
       "x": 11,
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "height": 1,
@@ -2219,7 +2218,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "scale": 1,
       "id": "cXkvJ7ponErutgoPhac1_f323b166-6430-439a-bb4c-83368a168db2"
-    }, {
+    } : {}, stations[1].video != ""? {
       "y": 23,
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "width": 3,
@@ -2235,7 +2234,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "_tags": ["Custom"],
       "x": 19
-    }, {
+    } : {}, stations[1].website != ""? {
       "_tags": ["Custom"],
       "id": "cXkvJ7ponErutgoPhac1_784a8cc8-268d-4253-aa0c-b99479005b1d",
       "type": 0,
@@ -2251,7 +2250,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 23,
       "color": "default",
       "orientation": 0
-    }, {
+    } : {}, stations[2].video != ""? {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "_tags": ["Custom"],
       "properties": {},
@@ -2267,7 +2266,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "y": 23,
       "orientation": 0
-    }, {
+    } : {}, stations[2].website != ""? {
       "color": "default",
       "properties": {},
       "y": 23,
@@ -2283,7 +2282,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "",
       "scale": 1,
       "id": "cXkvJ7ponErutgoPhac1_8ca6a3f5-e4a1-4146-92db-edd5c34f9bd0"
-    }, {
+    } : {}, stations[0].video != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2302,7 +2301,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    }, {
+    } : {}, stations[1].video != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2321,7 +2320,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    }, {
+    } : {}, stations[2].video != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2340,7 +2339,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    }, {
+    } : {}, stations[0].website != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2359,7 +2358,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    }, {
+    } : {}, stations[1].website != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2378,7 +2377,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    }, {
+    } : {}, stations[2].website != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2397,7 +2396,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    }, {
+    } : {}, {
       "id": "pC1j6Kjdjg9AkB1ih1GA-_b78de906-e4f3-4852-a4ab-a1121d6d8c6a",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/5jNSKZWt6Kil2LcWGLGGQK",
       "scale": 1,
@@ -2589,7 +2588,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "orientation": 0,
       "x": 32,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e"
-    }, {
+    }, stations[3].video != ""? {
       "properties": {},
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "orientation": 0,
@@ -2605,7 +2604,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 35,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "x": 7
-    }, {
+    } : {}, stations[3].website != ""? {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "y": 35,
@@ -2621,7 +2620,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "width": 3,
       "type": 0,
       "_name": ""
-    }, {
+    } : {}, stations[4].video != ""? {
       "orientation": 0,
       "properties": {},
       "type": 0,
@@ -2637,7 +2636,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "height": 1,
       "scale": 1
-    }, {
+    } : {}, stations[4].website != ""? {
       "_name": "",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
@@ -2653,7 +2652,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "scale": 1
-    }, {
+    } : {}, stations[5].video != ""? {
       "x": 31,
       "id": "cXkvJ7ponErutgoPhac1_9d1177b4-7f51-4104-97c3-23de43c25625",
       "width": 3,
@@ -2669,7 +2668,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 1,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "type": 0
-    }, {
+    } : {}, stations[5].video != ""?{
       "color": "default",
       "height": 1,
       "orientation": 0,
@@ -2685,7 +2684,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "x": 35,
       "_tags": ["Custom"],
       "scale": 1
-    }, {
+    } : {}, {
       "y": 34,
       "scale": 1,
       "x": 6,
@@ -2733,7 +2732,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "orientation": 0,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/t6tkQDdquKcEh5Fna8qfwE"
-    }, {
+    }, stations[3].video != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2752,7 +2751,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    }, {
+    } : {}, stations[4].video != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2771,7 +2770,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    }, {
+    } : {}, stations[5].video != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2790,7 +2789,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    }, {
+    } : {}, stations[3].website != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2809,7 +2808,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    }, {
+    } : {}, stations[4].website != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2828,7 +2827,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    }, {
+    } : {}, stations[5].website != ""? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2847,7 +2846,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    }, {
+    } : {}, {
       "templateId": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx",
       "scale": 1,
       "color": "#9badb7",

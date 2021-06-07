@@ -1,37 +1,67 @@
 const textImage = require('./text-image');
 const uploader = require('./gather-helpers');
 const mapUploader = require('./map-uploader');
-const config = require('../config');
+const config_6 = require('../6-config');
+const config_10 = require('../10-config');
 const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
 
 
-const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
-  await generateStations(paths, tables).then(async (stations) => {
-    //mapUploader.getMapJson(apiKey, spaceId, mapId);
+const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, size) => {
+
+  let config = (size > 6) ? config_10 : config_6;
+  await generateStations(paths, tables, config).then(async (stations) => {
+    //mapUploader.getMapJson(apiKey, spaceId, "Healthy");
     links = {};
+
     for (const room of rooms) {
 
-      links = Object.assign(links, tableLinks(room));
-      let portals = setPortals(room);
-      // find the tables that are assigned to this room
-      roomStations = [];
-      let i = 1;
-      while (room["table" + i] != undefined) {
-        roomStations.push(stations.find(x => x.id == room["table" + i]));
-        i++;
+      if (room["Room Name"] == "Lobby") {
+        if (lobby) {
+          let doorImages = [];
+          for (i = 1; i <= config.LOBBY_DOORS.length; i++) {
+            textImage.lobbySignFromText(room["door" + i], `door${i}_${room["door"+i]}`, 'center');
+            doorImages.push(`Images/door${i}_${room["door"+i]}`)
+          }
+          await delay(50);
+          let signs = await uploader.uploadFiles(doorImages, spaceId);
+
+          lobbyPortals = setPortals(room, config.LOBBY_DOORS, config);
+          mapUploader.makeLobby(apiKey, spaceId, lobbyPortals, Object.values(signs));
+        }
+      } else {
+// find number of rooms First
+// use the data to change which config to use (make new config)
+
+        links = Object.assign(links, tableLinks(room, config));
+        let portals = setPortals(room, config.DOORS, config);
+        // find the tables that are assigned to this room
+        roomStations = [];
+        let numberOfRooms = 0;
+        for (i = 1; i <= 10; i++) {
+          if (room["table" + i] != undefined) {
+            roomStations.push(stations.find(x => x.id == room["table" + i]));
+            numberOfRooms++;
+          } else {
+            roomStations.push({poster: {}});
+          }
+        }
+        doorImages = [];
+        for (i = 1; i <= config.DOORS.length; i++) {
+          textImage.signFromText(room["door" + i], `door${i}_${room["door"+i]}`, config.DOOR_TEXT_ALIGN[i-1]);
+          doorImages.push(`Images/door${i}_${room["door"+i]}`)
+        }
+        textImage.titleFromText(room['Room Name'], room['Room Name']);
+        await delay(50);
+        signs = await uploader.uploadFiles(doorImages, spaceId);
+        room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
+        // Generate the room
+        if (size > 6) {
+          mapUploader.makePosterRoom10(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
+        } else {
+          mapUploader.makePosterRoom6(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
+        }
+        console.log("Room " + room['Room Name'] + " has been completed");
       }
-      doorImages = [];
-      for (i = 1; i <= config.DOORS.length; i++) {
-        textImage.signFromText(room["door" + i], `door${i}_${room["door"+i]}`, 'left');
-        doorImages.push(`Images/door${i}_${room["door"+i]}`)
-      }
-      textImage.titleFromText(room['Room Name'], room['Room Name']);
-      await delay(50);
-      signs = await uploader.uploadFiles(doorImages, spaceId);
-      room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
-      // Generate the room
-      mapUploader.makeMap(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
-      console.log("Room " + room['Room Name'] + " has been completed");
     }
     console.log(links);
   });
@@ -39,7 +69,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths) => {
 
 // create a station object
 // Stations are a small area that contains a poster, title, etc for each presentation
-const generateStations = async (paths, tables) => {
+const generateStations = async (paths, tables, config) => {
   let stations = [];
   let titles = await generateTitles(tables);
   let presenters = await generatePresenters(tables);
@@ -116,7 +146,7 @@ const generatePosters = (links) => {
 }
 
 // creates an object of links that spawn users directly at a given table
-const tableLinks = (room) => {
+const tableLinks = (room, config) => {
   links = {}
   link_id = room["Room Name"].replace(" ", "%20");
   let i = 1;
@@ -128,16 +158,16 @@ const tableLinks = (room) => {
   return links
 }
 
-const setPortals = (room) => {
+const setPortals = (room, doors, config) => {
   let portals = [];
   let i = 1;
-  for (const door of config.DOORS) {
+  for (const door of doors) {
     for (const portal of door) {
       portals.push({
         "x": portal[0],
         "y": portal[1],
-        "targetX": config.ROOM_SPAWN[0],
-        "targetY": config.ROOM_SPAWN[1],
+        "targetX": room['door' + i] == "Lobby" ? config.LOBBY_SPAWN[0] : config.ROOM_SPAWN[0],
+        "targetY": room['door' + i] == "Lobby" ? config.LOBBY_SPAWN[1] : config.ROOM_SPAWN[1],
         "targetMap": room['door' + i],
       });
     }

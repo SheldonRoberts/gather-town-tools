@@ -1,13 +1,33 @@
 const axios = require("axios");
 const fs = require("fs");
-const template = require("../map templates/6-poster-room");
+const posterRoom6 = require("../map templates/6-poster-room");
+const posterRoom10 = require("../map templates/10-poster-room");
+const lobby = require("../map templates/lobby_1");
 
-const makeMap = async (apiKey, spaceId, map_name, stations, portals, room_title, signs) => {
+const makePosterRoom6 = async (apiKey, spaceId, map_name, stations, portals, room_title, signs) => {
   await axios.post("https://gather.town/api/setMap", {
     apiKey: apiKey,
     spaceId: spaceId,
     mapId: map_name,
-    mapContent: template.defineMap(stations, portals, room_title, signs),
+    mapContent: posterRoom6.defineMap(stations, portals, room_title, signs),
+  });
+}
+
+const makePosterRoom10 = async (apiKey, spaceId, map_name, stations, portals, room_title, signs) => {
+  await axios.post("https://gather.town/api/setMap", {
+    apiKey: apiKey,
+    spaceId: spaceId,
+    mapId: map_name,
+    mapContent: posterRoom10.defineMap(stations, portals, room_title, signs),
+  });
+}
+
+const makeLobby = async (apiKey, spaceId, portals, signs) => {
+  await axios.post("https://gather.town/api/setMap", {
+    apiKey: apiKey,
+    spaceId: spaceId,
+    mapId: "Lobby",
+    mapContent: lobby.defineMap(portals, signs),
   });
 }
 
@@ -27,5 +47,7 @@ const getMapJson = async (apiKey, spaceId, map_name) => {
   }
 }
 
-exports.makeMap = makeMap;
+exports.makePosterRoom6 = makePosterRoom6;
+exports.makePosterRoom10 = makePosterRoom10;
+exports.makeLobby = makeLobby;
 exports.getMapJson = getMapJson;

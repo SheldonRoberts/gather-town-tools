@@ -35,6 +35,7 @@ app.post('/submit-request', upload.fields([{
   function (req, res, next) {
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
+    size = req.body.inlineRadioOptions;
     let imagePaths = [];
     for (const file of req.files.photos) { imagePaths.push(file.path) }
     // turn the eventsheet (.xlsx) into JSON
@@ -50,8 +51,10 @@ app.post('/submit-request', upload.fields([{
     } else {
       gather.setGuestlist(null); // null guestlist creates a public space
     }
+
+    let lobby = (typeof req.body.lobby !== 'undefined')
     // generate the space
-    spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths);
+    spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby, size);
     res.redirect('/success');
   });
 
