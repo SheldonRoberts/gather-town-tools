@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="/socket.io/socket.io.js"></script>
 
-    <div class="jumbotron jumbotron-fluid " style="background-color:#007C41">
-      <div class="container text-center">
-        <h1 class="display-4" style="color:#FFFFFF;font-family:serif">Gather.town Poster Room Maker</h1>
-        <hr style="color:#FFDB05;height:5px;opacity:1;">
-        <p class="lead text-light">Upload a set of posters to be added to the poster room</p>
-      </div>
+<body>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+
+  <div class="jumbotron jumbotron-fluid " style="background-color:#007C41">
+    <div class="container text-center">
+      <h1 class="display-4" style="color:#FFFFFF;font-family:serif">Gather.town Poster Room Maker</h1>
+      <hr style="color:#FFDB05;height:5px;opacity:1;">
+      <p class="lead text-light">Upload a set of posters to be added to the poster room</p>
     </div>
+  </div>
 
-    <div class="alert alert-success" role="alert">
-  The rooms are being generated on Gather.town<br>Check your space in the Mapmaker
-</div>
-  </body>
+
+
+  <div class="alert alert-success" role="alert">
+    The rooms are being generated on Gather.town<br>Check your space in the Mapmaker
+  </div>
+  <h2>Direct Links</h2>
+  <div class="overflow-scroll" style="height: 200px;">
+    <p style="white-space:pre-line;" id="para">Error Generating Links</p>
+  </div>
+
+  <script>
+    const socket = io();
+
+
+    socket.on('links', function(msg) {
+      var para = document.getElementById('para');
+      para.innerHTML = msg;
+    });
+  </script>
+</body>
+
 </html>

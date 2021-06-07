@@ -7,11 +7,12 @@ const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writ
 
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, size) => {
+  
 
   let config = (size > 6) ? config_10 : config_6;
+  links = {};
   await generateStations(paths, tables, config).then(async (stations) => {
     //mapUploader.getMapJson(apiKey, spaceId, "Healthy");
-    links = {};
 
     for (const room of rooms) {
 
@@ -29,8 +30,6 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
           mapUploader.makeLobby(apiKey, spaceId, lobbyPortals, Object.values(signs));
         }
       } else {
-// find number of rooms First
-// use the data to change which config to use (make new config)
 
         links = Object.assign(links, tableLinks(room, config));
         let portals = setPortals(room, config.DOORS, config);
@@ -60,11 +59,11 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
         } else {
           mapUploader.makePosterRoom6(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
         }
-        console.log("Room " + room['Room Name'] + " has been completed");
+        console.log("Room '" + room['Room Name'] + "' has been completed.");
       }
     }
-    console.log(links);
   });
+  return links;
 }
 
 // create a station object

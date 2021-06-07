@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const multer = require('multer');
 const sheetReader = require('./scripts/eventsheet-reader');
 const spaceControl = require('./scripts/space-control');
@@ -18,12 +20,16 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 
 
+//Whenever someone connects this gets executed
+
+
 app.use(express.urlencoded({
   extended: true
 }))
 
 app.get('/',function(req,res) {
   res.sendFile(__dirname + '/static/index.html');
+  io.emit('chat message', 'peepee2');
 });
 
 app.get('/success',function(req,res) {
@@ -32,10 +38,9 @@ app.get('/success',function(req,res) {
 
 app.post('/submit-request', upload.fields([{
   name: 'photos', maxcount: 24}, {name: 'eventsheet', maxcount: 1}]),
-  function (req, res, next) {
+  async function (req, res, next) {
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
-    size = req.body.inlineRadioOptions;
     let imagePaths = [];
     for (const file of req.files.photos) { imagePaths.push(file.path) }
     // turn the eventsheet (.xlsx) into JSON
@@ -51,11 +56,19 @@ app.post('/submit-request', upload.fields([{
     } else {
       gather.setGuestlist(null); // null guestlist creates a public space
     }
-
-    let lobby = (typeof req.body.lobby !== 'undefined')
     // generate the space
-    spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby, size);
+    let teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths);
     res.redirect('/success');
+
+    let values = "";
+    for (const [key, value] of Object.entries(teleports)) {
+      name = key.replace("%20", " ")
+      //values += name + ": <a href='" + value + "'>'\r\n";
+      values += `<a href = '${value}'>${name}</a><br>`
+    }
+    io.on('connection', (socket) => {
+        io.emit('links', values);
+    });
   });
 
-  app.listen(PORT, () => console.log("listening on port " + PORT))
+  http.listen(PORT, () => console.log("listening on port: " + PORT))

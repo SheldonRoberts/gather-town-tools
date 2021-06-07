@@ -50,9 +50,13 @@ module.exports = {
     [10, 15],
     [22, 15],
     [34, 15],
+    [46, 15],
+    [58, 15],
     [10, 27],
     [22, 27],
     [34, 27],
+    [46, 27],
+    [58, 15],
   ],
   // The names of the sheets in the .xlsx file
   ROOM_SHEET_NAME: 'rooms',
