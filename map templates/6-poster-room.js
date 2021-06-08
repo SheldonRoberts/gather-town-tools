@@ -1,5 +1,5 @@
 
-const defineMap = (stations, portals, map_name, signs) => {
+const defineMap = (stations, portals, map_name, signs, room) => {
   return {
     "dimensions": [42, 42],
     "portals": portals,
@@ -1894,7 +1894,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 31,
       "spaceId": "6"
     }],
-    "useDrawnBG": true,
+    "useDrawnBG": false,
     "id": "new room 6.9",
     "announcer": [],
     "spawns": [{
@@ -1903,7 +1903,7 @@ const defineMap = (stations, portals, map_name, signs) => {
     }],
     "assets": [],
     "backgroundImagePath": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/gKUYfk0Tk7wFOong/7QK2z2uxXivPM0fSTo3eqR",
-    "objects": [{
+    "objects": [room.door1 == undefined? {} : {
       "templateId": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB",
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fq3uv11eTipgAzYgC?alt=media&token=d3f03864-e3da-43b0-af7a-c2dc62c21fec",
       "type": 0,
@@ -1919,7 +1919,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 1,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FvPHHgzelxoqAhIq3?alt=media&token=aa9387b8-62d9-42b0-adc7-3c23ace5a38d",
       "scale": 1
-    }, {
+    }, room.door2 == undefined? {} : {
       "properties": {},
       "scale": 1,
       "y": 11,
@@ -1935,7 +1935,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FnksDik5DOu2v6CHq?alt=media&token=5416e713-c621-4522-a1e8-0b67b3f0c162",
       "x": 15,
       "color": "#222034"
-    }, {
+    }, room.door3 == undefined? {} : {
       "orientation": 2,
       "x": 29,
       "scale": 1,
@@ -1951,7 +1951,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 11,
       "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_29285efd-116e-4f84-9daf-b724e76d1fc5",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FSIKOyxOeioTUoDm6?alt=media&token=f97cddd7-5f24-49b4-a4a8-2fee1c0f63e2"
-    }, {
+    }, room.door4 == undefined? {} : {
       "width": 1,
       "x": 40,
       "_name": "Arrow (Chalk)",
@@ -2846,7 +2846,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    } : {}, {
+    } : {}, room.door3 == undefined? {} : {
       "templateId": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx",
       "scale": 1,
       "color": "#9badb7",
@@ -2862,7 +2862,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FLFFA7UVxPGZsHjyK?alt=media&token=2bfb13aa-d564-4c23-9d6d-ff8530d388af",
       "y": 9
-    }, {
+    }, room.door2 == undefined? {} : {
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FLFFA7UVxPGZsHjyK?alt=media&token=2bfb13aa-d564-4c23-9d6d-ff8530d388af",
       "orientation": 0,
       "_tags": ["door", "social", "conference", "education", "office"],
@@ -2878,7 +2878,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "y": 9,
       "width": 4
-    }, {
+    }, room.door1 == undefined? {} : {
       "id": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx_9da71feb-6533-4b8a-bcb9-7fb4dc23b616",
       "type": 0,
       "_name": "Doorway (2-wide)",
@@ -2894,7 +2894,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 23,
       "width": 1,
       "x": 3
-    }, {
+    }, room.door4 == undefined? {} : {
       "width": 1,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Ft5Sh6b532jSdVXUE?alt=media&token=02a5b61f-93f4-449c-9c80-04ea959704d2",
       "properties": {},

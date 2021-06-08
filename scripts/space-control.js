@@ -59,9 +59,9 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
         room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
         // Generate the room
         if (size > 6) {
-          mapUploader.makePosterRoom10(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
+          mapUploader.makePosterRoom10(apiKey, spaceId, roomStations, portals, Object.values(room_title), Object.values(signs), room);
         } else {
-          mapUploader.makePosterRoom6(apiKey, spaceId, room['Room Name'], roomStations, portals, Object.values(room_title), Object.values(signs));
+          mapUploader.makePosterRoom6(apiKey, spaceId, roomStations, portals, Object.values(room_title), Object.values(signs), room);
         }
         console.log("Room '" + room['Room Name'] + "' has been completed.");
       }

@@ -1,4 +1,4 @@
-const defineMap = (stations, portals, map_name, signs) => {
+const defineMap = (stations, portals, map_name, signs, room) => {
   return {
     "announcer": [],
     "dimensions": [66, 42],
@@ -77,7 +77,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "",
       "width": 6,
       "normal": signs[3]
-    }, {
+    }, room.door4 == undefined? {} : {
       "properties": {},
       "orientation": 2,
       "height": 1,
@@ -551,7 +551,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_tags": ["Custom"],
       "height": 1,
       "templateId": "pC1j6Kjdjg9AkB1ih1GA-"
-    }, {}, {}, {}, {}, {}, {}, {
+    }, room.door4 == undefined? {} : {
       "templateId": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx",
       "type": 0,
       "scale": 1,
@@ -569,7 +569,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "Doorway (2-wide)",
       "y": 9,
       "color": "#9badb7"
-    }, {
+    }, room.door1 == undefined? {} : {
       "templateId": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx",
       "id": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx_3e9ec480-d3ab-4702-b73e-6f61e1a22103",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FTAaidCA6ST0a5EQr?alt=media&token=7091432d-6096-49b2-b160-8abd59cf0507",
@@ -1668,7 +1668,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "_tags": ["Custom"],
       "height": 1
-    } : {}, {
+    } : {}, room.door2 == undefined? {} : {
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FTAaidCA6ST0a5EQr?alt=media&token=7091432d-6096-49b2-b160-8abd59cf0507",
       "width": 4,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FLFFA7UVxPGZsHjyK?alt=media&token=2bfb13aa-d564-4c23-9d6d-ff8530d388af",
@@ -1684,7 +1684,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "orientation": 0,
       "id": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx_5cc2dd86-ff21-4dfd-80de-d1479c1bb278",
       "y": 9
-    }, {
+    }, room.door3 == undefined? {} :  {
       "_name": "Doorway (2-wide)",
       "type": 0,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FTAaidCA6ST0a5EQr?alt=media&token=7091432d-6096-49b2-b160-8abd59cf0507",
@@ -1700,7 +1700,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "templateId": "Doorway (2-wide) - brkt0v9oHWSrRhUTKtZBx",
       "_tags": ["door", "social", "conference", "education", "office"],
       "x": 39
-    }, {
+    }, room.door3 == undefined? {} : {
       "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_5ac92f90-f2d7-4aa4-a1ba-65a834894ebb",
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FnksDik5DOu2v6CHq?alt=media&token=5416e713-c621-4522-a1e8-0b67b3f0c162",
       "properties": {},
@@ -1716,7 +1716,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FSIKOyxOeioTUoDm6?alt=media&token=f97cddd7-5f24-49b4-a4a8-2fee1c0f63e2",
       "templateId": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB",
       "x": 41
-    }, {
+    }, room.door2 == undefined? {} : {
       "y": 11,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FSIKOyxOeioTUoDm6?alt=media&token=f97cddd7-5f24-49b4-a4a8-2fee1c0f63e2",
       "x": 27,
@@ -1732,7 +1732,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "orientation": 2,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FnksDik5DOu2v6CHq?alt=media&token=5416e713-c621-4522-a1e8-0b67b3f0c162",
       "id": "Arrow (Chalk) - ecZv8hqsoa4Ed66cwH1LB_e32159cb-559e-4000-a750-ba27a22f523c"
-    }, {
+    }, room.door1 == undefined? {} : {
       "color": "#222034",
       "height": 1,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FnksDik5DOu2v6CHq?alt=media&token=5416e713-c621-4522-a1e8-0b67b3f0c162",
