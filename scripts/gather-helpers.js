@@ -55,7 +55,11 @@ const uploadFiles = async (filePaths, space_id_code) => {
 									},
 									{ maxContentLength: Infinity, maxBodyLength: Infinity }
 								)
-								.then((res) => resolve(res.data));
+								.then((res) => resolve(res.data))
+                .catch(err => {
+                  var error = new Error();
+                  return error.stack;
+                });
 						})
 					)	,
 				};

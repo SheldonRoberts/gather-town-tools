@@ -7,7 +7,6 @@ const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writ
 
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, size) => {
-  
 
   let config = (size > 6) ? config_10 : config_6;
   links = {};
@@ -46,8 +45,13 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
         }
         doorImages = [];
         for (i = 1; i <= config.DOORS.length; i++) {
-          textImage.signFromText(room["door" + i], `door${i}_${room["door"+i]}`, config.DOOR_TEXT_ALIGN[i-1]);
-          doorImages.push(`Images/door${i}_${room["door"+i]}`)
+          if (room["door" + i] != undefined) {
+            name = room["door" + i];
+          } else {
+            name = "";
+          }
+          textImage.signFromText(name, `door${i}_${name}`, config.DOOR_TEXT_ALIGN[i-1]);
+          doorImages.push(`Images/door${i}_${name}`)
         }
         textImage.titleFromText(room['Room Name'], room['Room Name']);
         await delay(50);
@@ -88,14 +92,14 @@ const generateStations = async (paths, tables, config) => {
   let posters = generatePosters(posterLinks);
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
-    posterName = presenterNames[i].replace("Images", "uploads");
+    posterName = presenterNames[i] == undefined? "" : presenterNames[i].replace("Images", "uploads");
     posterName = posterName.replace(" ", "_");
     stations.push({
       title: titleLinks[i] || "",
       presenter: presenterLinks[i] || "",
       poster: posters[posterName] || "",
-      video: tables[i].video || "",
-      website: tables[i].URL || "",
+      video: tables[i].video,
+      website: tables[i].URL,
       id: tables[i]["Table ID"]
     });
   }

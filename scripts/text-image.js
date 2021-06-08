@@ -5,10 +5,8 @@ const fs = require('fs-extra');
 
 
 const imageFromText = async (text, filename) => {
-  let size = 18;
-  if (text.length > 32) {
-    size = 14;
-  }
+  let size = 14;
+  if (text == undefined) {text = " "}
   if (text.length > 83) {
     text = text.substring(0, 85) + "...";
   }
@@ -27,6 +25,7 @@ const imageFromText = async (text, filename) => {
 
 const titleFromText = async (text, filename) => {
   let size = 36;
+  if (text == undefined) {text = " "}
   if (text.length > 20 && text.length < 40) {
     size = 30;
   } else if (text.length > 40) {
@@ -47,6 +46,7 @@ const titleFromText = async (text, filename) => {
 
 const signFromText = async (text, filename, alignment) => {
   let size = 36;
+  if (text == undefined) {text = " "}
   if (text.length > 20 && text.length < 40) {
     size = 30;
   } else if (text.length > 40) {
@@ -67,6 +67,7 @@ const signFromText = async (text, filename, alignment) => {
 
 const lobbySignFromText = async (text, filename, alignment) => {
   let size = 36;
+  if (text == undefined) {text = " "}
   if (text.length > 20 && text.length < 40) {
     size = 30;
   } else if (text.length > 40) {

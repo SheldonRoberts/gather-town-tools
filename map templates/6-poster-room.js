@@ -2186,7 +2186,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "type": 0,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/dImT7w6vOdPrxvpZwAtOcg"
-    }, stations[0].video != ""? {
+    }, stations[0].video != undefined? {
       "height": 1,
       "scale": 1,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
@@ -2202,7 +2202,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "type": 0,
       "x": 7,
       "orientation": 0
-    } : {}, stations[0].website != ""? {
+    } : {}, stations[0].website != undefined? {
       "x": 11,
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "height": 1,
@@ -2218,7 +2218,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "scale": 1,
       "id": "cXkvJ7ponErutgoPhac1_f323b166-6430-439a-bb4c-83368a168db2"
-    } : {}, stations[1].video != ""? {
+    } : {}, stations[1].video != undefined? {
       "y": 23,
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "width": 3,
@@ -2234,7 +2234,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "_tags": ["Custom"],
       "x": 19
-    } : {}, stations[1].website != ""? {
+    } : {}, stations[1].website != undefined? {
       "_tags": ["Custom"],
       "id": "cXkvJ7ponErutgoPhac1_784a8cc8-268d-4253-aa0c-b99479005b1d",
       "type": 0,
@@ -2250,7 +2250,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 23,
       "color": "default",
       "orientation": 0
-    } : {}, stations[2].video != ""? {
+    } : {}, stations[2].video != undefined? {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "_tags": ["Custom"],
       "properties": {},
@@ -2266,7 +2266,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "y": 23,
       "orientation": 0
-    } : {}, stations[2].website != ""? {
+    } : {}, stations[2].website != undefined? {
       "color": "default",
       "properties": {},
       "y": 23,
@@ -2282,7 +2282,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "",
       "scale": 1,
       "id": "cXkvJ7ponErutgoPhac1_8ca6a3f5-e4a1-4146-92db-edd5c34f9bd0"
-    } : {}, stations[0].video != ""? {
+    } : {}, stations[0].video != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2301,7 +2301,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    } : {}, stations[1].video != ""? {
+    } : {}, stations[1].video != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2320,7 +2320,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    } : {}, stations[2].video != ""? {
+    } : {}, stations[2].video != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2339,7 +2339,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    } : {}, stations[0].website != ""? {
+    } : {}, stations[0].website != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2358,7 +2358,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    } : {}, stations[1].website != ""? {
+    } : {}, stations[1].website != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2377,7 +2377,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    } : {}, stations[2].website != ""? {
+    } : {}, stations[2].website != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2588,7 +2588,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "orientation": 0,
       "x": 32,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2Fu496qFO54nlnP8F3?alt=media&token=c5dca5ef-3af4-48d3-a470-4cd0626b043e"
-    }, stations[3].video != ""? {
+    }, stations[3].video != undefined? {
       "properties": {},
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "orientation": 0,
@@ -2604,7 +2604,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 35,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "x": 7
-    } : {}, stations[3].website != ""? {
+    } : {}, stations[3].website != undefined? {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "y": 35,
@@ -2620,7 +2620,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "width": 3,
       "type": 0,
       "_name": ""
-    } : {}, stations[4].video != ""? {
+    } : {}, stations[4].video != undefined? {
       "orientation": 0,
       "properties": {},
       "type": 0,
@@ -2636,7 +2636,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "height": 1,
       "scale": 1
-    } : {}, stations[4].website != ""? {
+    } : {}, stations[4].website != undefined? {
       "_name": "",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
@@ -2652,7 +2652,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "scale": 1
-    } : {}, stations[5].video != ""? {
+    } : {}, stations[5].video != undefined? {
       "x": 31,
       "id": "cXkvJ7ponErutgoPhac1_9d1177b4-7f51-4104-97c3-23de43c25625",
       "width": 3,
@@ -2668,7 +2668,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 1,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "type": 0
-    } : {}, stations[5].video != ""?{
+    } : {}, stations[5].video != undefined?{
       "color": "default",
       "height": 1,
       "orientation": 0,
@@ -2732,7 +2732,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "orientation": 0,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/t6tkQDdquKcEh5Fna8qfwE"
-    }, stations[3].video != ""? {
+    }, stations[3].video != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2751,7 +2751,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    } : {}, stations[4].video != ""? {
+    } : {}, stations[4].video != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2770,7 +2770,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    } : {}, stations[5].video != ""? {
+    } : {}, stations[5].video != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2789,7 +2789,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": ""
-    } : {}, stations[3].website != ""? {
+    } : {}, stations[3].website != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2808,7 +2808,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    } : {}, stations[4].website != ""? {
+    } : {}, stations[4].website != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",
@@ -2827,7 +2827,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "_name": ""
-    } : {}, stations[5].website != ""? {
+    } : {}, stations[5].website != undefined? {
       "scale": 1,
       "orientation": 0,
       "color": "default",

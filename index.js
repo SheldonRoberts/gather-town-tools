@@ -10,14 +10,16 @@ const PORT = process.env.PORT || 3000;
 
 // Files uploaded to multer will keep their original name, no extension
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function(req, file, cb) {
     cb(null, 'uploads/')
   },
-  filename: function (req, file, cb) {
+  filename: function(req, file, cb) {
     cb(null, file.originalname.split('.')[0])
   }
 })
-const upload = multer({storage: storage})
+const upload = multer({
+  storage: storage
+})
 
 
 //Whenever someone connects this gets executed
@@ -27,12 +29,12 @@ app.use(express.urlencoded({
   extended: true
 }))
 
-app.get('/',function(req,res) {
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/static/index.html');
   io.emit('chat message', 'peepee2');
 });
 
-app.get('/success',function(req,res) {
+app.get('/success', function(req, res) {
   res.sendFile(__dirname + '/static/success.html');
 });
 
@@ -41,8 +43,13 @@ app.post('/submit-request', upload.fields([{
   async function (req, res, next) {
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
+    size = req.body.inlineRadioOptions;
     let imagePaths = [];
-    for (const file of req.files.photos) { imagePaths.push(file.path) }
+    if (req.files.photos != undefined) {
+      for (const file of req.files.photos) {
+        imagePaths.push(file.path)
+      }
+    }
     // turn the eventsheet (.xlsx) into JSON
     const sheet = req.files.eventsheet[0].filename;
     tables = sheetReader.tablesToJson(sheet);
@@ -56,8 +63,10 @@ app.post('/submit-request', upload.fields([{
     } else {
       gather.setGuestlist(null); // null guestlist creates a public space
     }
+
+    let lobby = (typeof req.body.lobby !== 'undefined')
     // generate the space
-    let teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths);
+    teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby, size);
     res.redirect('/success');
 
     let values = "";
@@ -67,8 +76,8 @@ app.post('/submit-request', upload.fields([{
       values += `<a href = '${value}'>${name}</a><br>`
     }
     io.on('connection', (socket) => {
-        io.emit('links', values);
+      io.emit('links', values);
     });
   });
 
-  http.listen(PORT, () => console.log("listening on port: " + PORT))
+http.listen(PORT, () => console.log("listening on port: " + PORT))

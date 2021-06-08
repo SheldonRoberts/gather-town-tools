@@ -239,7 +239,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "scale": 1,
       "height": 5,
       "orientation": 0
-    }, {
+    }, stations[0].video != undefined? {
       "x": 7,
       "_tags": ["Custom"],
       "width": 3,
@@ -255,7 +255,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "height": 1,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD"
-    }, {
+    } : {}, stations[0].website != undefined? {
       "color": "default",
       "properties": {},
       "y": 23,
@@ -271,7 +271,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "",
       "orientation": 0,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD"
-    }, {}, {}, {}, {}, {
+    } : {}, stations[0].video != undefined? {
       "orientation": 0,
       "scale": 1,
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
@@ -290,7 +290,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "type": 6,
       "distThreshold": 0,
       "x": 7
-    }, {}, {}, {
+    } : {}, stations[0].website != undefined? {
       "distThreshold": 0,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "color": "default",
@@ -306,10 +306,10 @@ const defineMap = (stations, portals, map_name, signs) => {
       "width": 3,
       "x": 11,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[0].website
       },
       "y": 22
-    }, {}, {}, {
+    } : {}, {
       "offsetY": 0,
       "scale": 1,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/t6tkQDdquKcEh5Fna8qfwE",
@@ -1038,7 +1038,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "",
       "color": "default",
       "_tags": ["Custom"]
-    }, {
+    }, stations[1].video != undefined? {
       "height": 2,
       "properties": {
         "message": "Click Link To Visit: " + stations[1].video
@@ -1057,7 +1057,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "id": "qZaWIq0GpeMy7MoZT-w1K_b6a59a16-b326-4a81-bbdc-7c2e7261187a",
       "y": 22,
       "orientation": 0
-    }, {
+    } : {}, stations[2].video != undefined? {
       "x": 31,
       "height": 2,
       "scale": 1,
@@ -1076,7 +1076,7 @@ const defineMap = (stations, portals, map_name, signs) => {
         "message": "Click Link To Visit: " + stations[2].video
       },
       "id": "qZaWIq0GpeMy7MoZT-w1K_4066a6ac-2faf-4cb2-8261-3b983982be54"
-    }, {
+    } : {}, stations[3].video != undefined? {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/UDw2PmGfJaKeVPMgdkGh5N",
       "height": 2,
       "color": "default",
@@ -1095,7 +1095,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "id": "qZaWIq0GpeMy7MoZT-w1K_e00e332f-16e3-45cd-9b15-5cef1c1eeaba",
       "width": 3,
       "distThreshold": 0
-    }, {
+    } : {}, stations[4].video != undefined? {
       "orientation": 0,
       "type": 6,
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
@@ -1114,7 +1114,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "x": 55,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF"
-    }, {
+    } : {}, stations[5].video != undefined? {
       "scale": 1,
       "type": 6,
       "y": 34,
@@ -1133,7 +1133,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "_name": "",
       "_tags": ["Custom"]
-    }, {
+    } : {}, stations[6].video != undefined? {
       "_tags": ["Custom"],
       "scale": 1,
       "properties": {
@@ -1152,7 +1152,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "id": "qZaWIq0GpeMy7MoZT-w1K_d4a962b0-f833-4485-83a3-e831df6476cb",
       "orientation": 0
-    }, {
+    } : {}, stations[7].video != undefined? {
       "y": 34,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/nPdb4hzRrfcGvBaPlYOSIF",
       "_name": "",
@@ -1171,7 +1171,7 @@ const defineMap = (stations, portals, map_name, signs) => {
         "message": "Click Link To Visit: " + stations[7].video
       },
       "height": 2
-    }, {
+    } : {}, stations[8].video != undefined? {
       "color": "default",
       "_tags": ["Custom"],
       "height": 2,
@@ -1190,7 +1190,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       },
       "width": 3,
       "y": 34
-    }, {
+    } : {}, stations[9].video != undefined? {
       "properties": {
         "message": "Click Link To Visit: " + stations[9].video
       },
@@ -1209,9 +1209,9 @@ const defineMap = (stations, portals, map_name, signs) => {
       "width": 3,
       "_name": "",
       "scale": 1
-    }, {
+    } : {}, stations[1].website != undefined?  {
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[1].website
       },
       "orientation": 0,
       "id": "qZaWIq0GpeMy7MoZT-w1K_318254c7-26a8-4f1d-9ffe-64f8d761ed5e",
@@ -1228,9 +1228,9 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_name": "",
       "_tags": ["Custom"],
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc"
-    }, {
+    } : {}, stations[2].website != undefined? {
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[2].website
       },
       "orientation": 0,
       "y": 22,
@@ -1247,7 +1247,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu",
       "_name": ""
-    }, {
+    } : {}, stations[3].website != undefined? {
       "id": "qZaWIq0GpeMy7MoZT-w1K_45688c2f-3abf-4635-b938-b8f854a1ff7c",
       "distThreshold": 0,
       "type": 6,
@@ -1256,7 +1256,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "width": 3,
       "height": 2,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[3].website
       },
       "y": 22,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
@@ -1266,7 +1266,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
       "scale": 1,
       "orientation": 0
-    }, {
+    } : {}, stations[4].website != undefined? {
       "_name": "",
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
@@ -1277,7 +1277,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "x": 59,
       "type": 6,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[4].website
       },
       "orientation": 0,
       "scale": 1,
@@ -1285,7 +1285,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_tags": ["Custom"],
       "width": 3,
       "id": "qZaWIq0GpeMy7MoZT-w1K_3e91d32f-315b-4a2b-942f-adbe20c5de9e"
-    }, {
+    } : {}, stations[5].website != undefined? {
       "orientation": 0,
       "distThreshold": 0,
       "height": 2,
@@ -1298,13 +1298,13 @@ const defineMap = (stations, portals, map_name, signs) => {
       "scale": 1,
       "type": 6,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[5].website
       },
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
       "x": 59,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu"
-    }, {
+    } : {}, stations[6].website != undefined? {
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
       "distThreshold": 0,
       "type": 6,
@@ -1319,18 +1319,18 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "scale": 1,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[6].website
       },
       "color": "default",
       "height": 2
-    }, {
+    } : {}, stations[7].website != undefined? {
       "type": 6,
       "id": "qZaWIq0GpeMy7MoZT-w1K_8f4ce2a4-ba9a-4885-ba70-bcb87948aabb",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
       "distThreshold": 0,
       "_name": "",
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[7].website
       },
       "height": 2,
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
@@ -1342,10 +1342,10 @@ const defineMap = (stations, portals, map_name, signs) => {
       "orientation": 0,
       "x": 35,
       "_tags": ["Custom"]
-    }, {
+    } : {}, stations[8].website != undefined? {
       "distThreshold": 0,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[8].website
       },
       "height": 2,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/9Og2Rdk2GJdEYaDbs28CYc",
@@ -1361,7 +1361,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "x": 23,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/0Y0r0jUYgrYWDQzH/c02T0c95t4nLRfvMWiEsIu"
-    }, {
+    } : {}, stations[9].website != undefined? {
       "height": 2,
       "y": 34,
       "width": 3,
@@ -1374,13 +1374,13 @@ const defineMap = (stations, portals, map_name, signs) => {
       "orientation": 0,
       "scale": 1,
       "properties": {
-        "message": "Click Link To Visit: https://www.linkedin.com/in/mashrura/?originalSubdomain=ca"
+        "message": "Click Link To Visit: " + stations[9].website
       },
       "distThreshold": 0,
       "id": "qZaWIq0GpeMy7MoZT-w1K_e6d95d18-73d1-4979-9cfe-34ac28e16173",
       "templateId": "qZaWIq0GpeMy7MoZT-w1K",
       "x": 11
-    }, {
+    } : {}, stations[1].video != undefined? {
       "orientation": 0,
       "y": 23,
       "_name": "",
@@ -1396,7 +1396,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "height": 1,
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "width": 3
-    }, {
+    } : {}, stations[1].website != undefined?  {
       "x": 23,
       "id": "cXkvJ7ponErutgoPhac1_7690d1ae-6b6a-4847-bed0-bb3ccae53db5",
       "height": 1,
@@ -1412,7 +1412,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "_tags": ["Custom"],
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "scale": 1
-    }, {
+    } : {}, stations[2].video != undefined? {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "id": "cXkvJ7ponErutgoPhac1_ba9622cc-84cc-4570-8b9e-b2089d5b3ce7",
       "_tags": ["Custom"],
@@ -1428,7 +1428,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "scale": 1,
       "height": 1,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD"
-    }, {
+    } : {}, stations[2].website != undefined? {
       "properties": {},
       "orientation": 0,
       "height": 1,
@@ -1444,7 +1444,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "y": 23,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms"
-    }, {
+    } : {}, stations[3].video != undefined? {
       "width": 3,
       "properties": {},
       "color": "default",
@@ -1460,7 +1460,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "type": 0,
       "x": 43
-    }, {
+    } : {}, stations[3].website != undefined? {
       "properties": {},
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "color": "default",
@@ -1476,7 +1476,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "id": "cXkvJ7ponErutgoPhac1_37516999-8692-4fd8-b20c-4b9dd24543df",
       "scale": 1,
       "_tags": ["Custom"]
-    }, {
+    } : {}, stations[4].video != undefined? {
       "scale": 1,
       "id": "cXkvJ7ponErutgoPhac1_a0b036e1-eb4f-480b-827b-c5694fe321c7",
       "_tags": ["Custom"],
@@ -1492,7 +1492,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "x": 55,
       "templateId": "cXkvJ7ponE_rutgoPhac1"
-    }, {
+    } : {}, stations[4].website != undefined? {
       "width": 3,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "templateId": "cXkvJ7ponE_rutgoPhac1",
@@ -1508,7 +1508,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "y": 23,
       "color": "default",
       "scale": 1
-    }, {
+    } : {}, stations[9].website != undefined? {
       "y": 35,
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "color": "default",
@@ -1524,7 +1524,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "x": 59,
       "width": 3
-    }, {
+    } : {}, stations[9].video != undefined? {
       "height": 1,
       "_name": "",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
@@ -1540,7 +1540,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "type": 0,
       "scale": 1
-    }, {
+    } : {}, stations[8].website != undefined?  {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "width": 3,
       "y": 35,
@@ -1556,7 +1556,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "x": 47,
       "properties": {},
       "scale": 1
-    }, {
+    } : {}, stations[8].video != undefined? {
       "scale": 1,
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
@@ -1572,7 +1572,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "id": "cXkvJ7ponErutgoPhac1_57ed6760-bd27-47b0-8ab9-4ec3b612264e",
       "color": "default",
       "orientation": 0
-    }, {
+    } : {}, stations[7].website != undefined?  {
       "_name": "",
       "height": 1,
       "properties": {},
@@ -1588,7 +1588,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "id": "cXkvJ7ponErutgoPhac1_0b5e5f83-ac4a-4838-a6ab-435504027a94",
       "type": 0,
       "orientation": 0
-    }, {
+    } : {}, stations[7].video != undefined? {
       "height": 1,
       "_name": "",
       "_tags": ["Custom"],
@@ -1604,7 +1604,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "scale": 1,
       "type": 0
-    }, {
+    } : {}, stations[6].website != undefined? {
       "height": 1,
       "orientation": 0,
       "_tags": ["Custom"],
@@ -1620,7 +1620,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "width": 3,
       "id": "cXkvJ7ponErutgoPhac1_e13dd5da-ea5f-4bd9-9d92-2c3af9b176e6",
       "y": 35
-    }, {
+    } : {}, stations[6].video != undefined? {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "x": 19,
       "id": "cXkvJ7ponErutgoPhac1_77fceaef-b757-4042-9356-8956d740b6b2",
@@ -1636,7 +1636,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "color": "default",
       "_name": "",
       "highlighted": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/xqTIEADLMNml1jPqkWkFms"
-    }, {
+    } : {}, stations[5].website != undefined?  {
       "y": 35,
       "color": "default",
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
@@ -1652,7 +1652,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "properties": {},
       "scale": 1,
       "width": 3
-    }, {
+    } : {}, stations[5].video != undefined? {
       "templateId": "cXkvJ7ponE_rutgoPhac1",
       "properties": {},
       "orientation": 0,
@@ -1668,7 +1668,7 @@ const defineMap = (stations, portals, map_name, signs) => {
       "normal": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/TytS9LMA7oI4Pxt7q3uNFD",
       "_tags": ["Custom"],
       "height": 1
-    }, {
+    } : {}, {
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FTAaidCA6ST0a5EQr?alt=media&token=7091432d-6096-49b2-b160-8abd59cf0507",
       "width": 4,
       "highlighted": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FLFFA7UVxPGZsHjyK?alt=media&token=2bfb13aa-d564-4c23-9d6d-ff8530d388af",

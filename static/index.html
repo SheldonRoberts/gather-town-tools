@@ -11,7 +11,7 @@
     <div class="container text-center">
       <h1 class="display-4" style="color:#FFFFFF;font-family:serif">Gather.town Poster Room Maker</h1>
       <hr style="color:#FFDB05;height:5px;opacity:1;">
-      <p class="lead text-light">Upload a set of posters to be added to the poster room</p>
+      <p class="lead text-light">Follow the steps below to generate a poster space</p>
     </div>
   </div>
   <!--Bootstrap -->
@@ -31,18 +31,18 @@
     <form action="/submit-request" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label>API key</label>
-        <input type="text" class="form-control" name="key" placeholder="">
+        <input type="text" class="form-control" name="key" placeholder="" required>
         <small class="form-text text-muted">You can generate an API key <a href="https://gather.town/apiKeys">here</a></small>
         <br><br>
         <label>Space ID</label>
-        <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name">
-        <small class="form-text text-muted">The space ID is found at the end of the room's url</small>
+        <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name" required>
+        <small class="form-text text-muted">The space ID is found at the end of the room's url</small><br>
         <br>
-        <label for="formFileMultiple" class="form-label">Upload Event .XLSX</label>
-        <input class="form-control" type="file" name="eventsheet" style="width:400px" /><br>
+        <label for="formFileMultiple" class="form-label">Upload Event .XLSX <a href="https://drive.google.com/file/d/1hBsw5iiLG3rcAEu7_W1Jxm3sq_bR37td/view?usp=sharing">(template)</a></label>
+        <input class="form-control" type="file" name="eventsheet" style="width:400px" required/><br>
         <label for="formFileMultiple" class="form-label">Upload Posters (PNG or JPEG)</label>
         <input class="form-control" type="file" id="formFileMultiple" name="photos" style="width:400px" multiple />
-        <small class="form-text text-muted">The poster images should be formatted First_Last.png</small><br><br>
+        <small class="form-text text-muted">The poster images should be formatted First_Last (no file extension)</small><br><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="6" checked>
           <label class="form-check-label" for="inlineRadio1">6 Tables Per Room</label>
@@ -60,7 +60,8 @@
         <label class="form-check-label" for="flexCheckChecked">
           Generate New Lobby (Existing lobby will be lost)
         </label><br><br>
-        <button type="submit" class="btn btn-outline-primary">Make Room</button>
+        <button type="submit" class="btn btn-outline-primary">Make Room</button><br>
+        <small class="form-text text-muted">Takes ~ 30 seconds</small>
       </div>
 
   </div>
