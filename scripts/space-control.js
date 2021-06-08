@@ -92,8 +92,10 @@ const generateStations = async (paths, tables, config) => {
   let posters = generatePosters(posterLinks);
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
-    posterName = presenterNames[i] == undefined? "" : presenterNames[i].replace("Images", "uploads");
+
+    posterName = presenterNames[i] == undefined? "" : presenterNames[i].replace("Images/presenter_", "uploads/");
     posterName = posterName.replace(" ", "_");
+
     stations.push({
       title: titleLinks[i] || "",
       presenter: presenterLinks[i] || "",
@@ -126,8 +128,8 @@ const generatePresenters = async (tables) => {
   let i = 0;
   for (const table of tables) {
     // changes to the font and colors are done in text-image.js
-    textImage.imageFromText(table['presenter name'], table['presenter name']);
-    presenters.push("Images/" + table['presenter name']);
+    textImage.imageFromText(table['presenter name'], "presenter_" + table['presenter name']);
+    presenters.push("Images/presenter_" + table['presenter name']);
     i++;
   }
   return presenters;

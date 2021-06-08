@@ -592,8 +592,8 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "_name": "Poster",
       "height": 2,
       "properties": {
-        "preview": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy",
-        "image": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy"
+        "image": stations[0].poster.posterImg,
+        "preview": stations[0].poster.posterPreview
       },
       "offsetY": 0,
       "y": 17,
@@ -616,7 +616,10 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "height": 2,
       "color": "#639bff",
       "type": 2,
-      "properties": {},
+      "properties": {
+        "image": stations[1].poster.posterImg,
+        "preview": stations[1].poster.posterPreview
+      },
       "y": 17,
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_f1eeaa66-09df-4a90-8932-d34531aa032b",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
@@ -638,7 +641,10 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "color": "#639bff",
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_5f68fede-0ee5-4c5e-ba35-ab55a1fff7a7",
       "y": 17,
-      "properties": {},
+      "properties": {
+        "image": stations[2].poster.posterImg,
+        "preview": stations[2].poster.posterPreview
+      },
       "type": 2,
       "scale": 1,
       "width": 3,
@@ -651,7 +657,10 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "templateId": "Poster - 8RSUnkK2tlLxX8uX-o-Ss",
       "offsetY": 0,
       "_tags": ["decoration", "decoration/wall", "office", "conference", "presentation"],
-      "properties": {},
+      "properties": {
+        "image": stations[5].poster.posterImg,
+        "preview": stations[5].poster.posterPreview
+      },
       "y": 29,
       "height": 2,
       "distThreshold": 3,
@@ -676,7 +685,10 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "width": 3,
       "_name": "Poster",
       "orientation": 0,
-      "properties": {},
+      "properties": {
+        "image": stations[6].poster.posterImg,
+        "preview": stations[6].poster.posterPreview
+      },
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
       "y": 29,
       "offsetY": 0,
@@ -689,7 +701,10 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "scale": 1,
       "orientation": 0,
       "templateId": "Poster - 8RSUnkK2tlLxX8uX-o-Ss",
-      "properties": {},
+      "properties": {
+        "image": stations[7].poster.posterImg,
+        "preview": stations[7].poster.posterPreview
+      },
       "width": 3,
       "y": 29,
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_f10170cb-add6-49fe-9109-4b03ed7a421a",
@@ -902,8 +917,8 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "type": 2,
       "color": "#639bff",
       "properties": {
-        "preview": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy",
-        "image": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy"
+        "image": stations[3].poster.posterImg,
+        "preview": stations[3].poster.posterPreview
       },
       "y": 17,
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
@@ -921,8 +936,8 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "_tags": ["decoration", "decoration/wall", "office", "conference", "presentation"],
       "y": 17,
       "properties": {
-        "image": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy",
-        "preview": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy"
+        "image": stations[4].poster.posterImg,
+        "preview": stations[4].poster.posterPreview
       },
       "scale": 1,
       "_name": "Poster",
@@ -940,8 +955,8 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "y": 29,
       "height": 2,
       "properties": {
-        "preview": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy",
-        "image": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy"
+        "image": stations[8].poster.posterImg,
+        "preview": stations[8].poster.posterPreview
       },
       "_tags": ["decoration", "decoration/wall", "office", "conference", "presentation"],
       "color": "#639bff",
@@ -968,8 +983,8 @@ const defineMap = (stations, portals, map_name, signs, room) => {
       "color": "#639bff",
       "_name": "Poster",
       "properties": {
-        "image": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy",
-        "preview": "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/GZ8QKZ7SMxkbVBbE/lfUpIQNoWNQC6IGSgkaPzy"
+        "image": stations[9].poster.posterImg,
+        "preview": stations[9].poster.posterPreview
       },
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_33616ca7-1ff4-4f6f-ad65-39761e51c50c",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
