@@ -4,21 +4,12 @@ const posterRoom6 = require("../map templates/6-poster-room");
 const posterRoom10 = require("../map templates/10-poster-room");
 const lobby = require("../map templates/lobby_1");
 
-const makePosterRoom6 = async (apiKey, spaceId, stations, portals, room_title, signs, room) => {
+const makePosterRoom = async (apiKey, spaceId, objects, portals, room_title, signs, room, size) => {
   await axios.post("https://gather.town/api/setMap", {
     apiKey: apiKey,
     spaceId: spaceId,
     mapId: room["Room Name"],
-    mapContent: posterRoom6.defineMap(stations, portals, room_title, signs, room),
-  });
-}
-
-const makePosterRoom10 = async (apiKey, spaceId, stations, portals, room_title, signs, room) => {
-  await axios.post("https://gather.town/api/setMap", {
-    apiKey: apiKey,
-    spaceId: spaceId,
-    mapId: room["Room Name"],
-    mapContent: posterRoom10.defineMap(stations, portals, room_title, signs, room),
+    mapContent: posterRoom10.defineMap(objects, size, portals),
   });
 }
 
@@ -47,7 +38,7 @@ const getMapJson = async (apiKey, spaceId, map_name) => {
   }
 }
 
-exports.makePosterRoom6 = makePosterRoom6;
-exports.makePosterRoom10 = makePosterRoom10;
+
+exports.makePosterRoom = makePosterRoom;
 exports.makeLobby = makeLobby;
 exports.getMapJson = getMapJson;

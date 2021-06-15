@@ -1,36 +1,45 @@
-
 module.exports = {
   PRIMARY_COLOUR: "#7AB800",
   SECONDARY_COLOUR: "#004250",
   BG_COLOUR: "#ccd1da",
   TITLE_BG_COLOUR: "#afb4bd",
   // These are the coordinates of doors in the map
-  DOORS: [
-    [ // door1
-      [15, 10], // door square 1
-      [16, 10], // door square 2
-    ], [ // door2 ...
-      [27, 10],
-      [28, 10],
-    ], [
-      [40, 10],
-      [41, 10],
-    ], [
-      [52, 10],
-      [53, 10],
+  DOORS: {
+
+
+    x4: [
+      [ // door1
+        [0, 20], // door square 1
+        [0, 21], // door square 2
+      ],
+      [ // door2 ...
+        [10, 1],
+        [11, 1],
+      ],
+      [
+        [28, 1],
+        [29, 1],
+      ],
+      [
+        [39, 20],
+        [39, 21],
+      ],
     ],
-  ],
+  },
   LOBBY_DOORS: [
     [ // door1
       [64, 26], // door square 1
       [65, 26], // door square 2 // door square 3
-    ], [ // door2 ...
+    ],
+    [ // door2 ...
       [72, 26],
       [73, 26],
-    ], [
+    ],
+    [
       [80, 26],
       [81, 26],
-    ], [
+    ],
+    [
       [88, 26],
       [89, 26],
     ],
@@ -40,7 +49,7 @@ module.exports = {
 
   DOOR_TEXT_ALIGN: ['center', 'center', 'center', 'center'],
 
-  ROOM_SPAWN: [34,25], // [x,y] for spawn of poster rooms
+  ROOM_SPAWN: [34, 25], // [x,y] for spawn of poster rooms
   BLANK_STATION: {
     poster: {
       undefined

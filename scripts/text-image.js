@@ -11,7 +11,7 @@ const imageFromText = async (text, filename) => {
     text = text.substring(0, 85) + "...";
   }
   textToImage.generate(text, {
-    maxWidth: 288,
+    maxWidth: 32*13-2,
     customHeight: 32,
     fontSize: size,
     margin: 1,

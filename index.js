@@ -43,7 +43,6 @@ app.post('/submit-request', upload.fields([{
   async function (req, res, next) {
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
-    size = req.body.inlineRadioOptions;
     let imagePaths = [];
     if (req.files.photos != undefined) {
       for (const file of req.files.photos) {
@@ -66,7 +65,7 @@ app.post('/submit-request', upload.fields([{
 
     let lobby = (typeof req.body.lobby !== 'undefined')
     // generate the space
-    teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby, size);
+    teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby);
     res.redirect('/success');
 
     let values = "";

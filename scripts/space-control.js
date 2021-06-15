@@ -1,17 +1,16 @@
 const textImage = require('./text-image');
 const uploader = require('./gather-helpers');
 const mapUploader = require('./map-uploader');
-const config_6 = require('../6-config');
-const config_10 = require('../10-config');
+const config = require('../10-config');
+const stationManager = require('./station');
 const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
 
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, size) => {
 
-  let config = (size > 6) ? config_10 : config_6;
   links = {};
   await generateStations(paths, tables, config).then(async (stations) => {
-    //mapUploader.getMapJson(apiKey, spaceId, "Healthy");
+    //mapUploader.getMapJson(apiKey, spaceId, "2x2");
 
     for (const room of rooms) {
 
@@ -25,24 +24,52 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
           await delay(50);
           let signs = await uploader.uploadFiles(doorImages, spaceId);
 
-          lobbyPortals = setPortals(room, config.LOBBY_DOORS, config);
+          lobbyPortals = setPortals(room, config, -1);
           mapUploader.makeLobby(apiKey, spaceId, lobbyPortals, Object.values(signs));
         }
       } else {
 
         links = Object.assign(links, tableLinks(room, config));
-        let portals = setPortals(room, config.DOORS, config);
         // find the tables that are assigned to this room
         roomStations = [];
-        let numberOfRooms = 0;
-        for (i = 1; i <= 10; i++) {
-          if (room["table" + i] != undefined) {
-            roomStations.push(stations.find(x => x.id == room["table" + i]));
-            numberOfRooms++;
+        let numberOfStations = 0;
+        while (true) {
+          if (room["table" + (numberOfStations+1)] != undefined) {
+            roomStations.push(stations.find(x => x.id == room["table" + (numberOfStations+1)]));
+            numberOfStations++;
           } else {
-            roomStations.push({poster: {}});
+            break;
           }
         }
+        let portals = setPortals(room, config, numberOfStations);
+        let objects = [];
+        let orientations = [
+          [
+            [6,15]
+          ],
+          [
+            [5, 6],
+            [22, 6],
+            [5, 23],
+            [22, 23],
+            [22, 23],
+            [22, 23],
+            [22, 23],
+            [22, 23],
+            [22, 23],
+            [22, 23],
+            [22, 23],
+
+          ]
+        ];
+        coords = orientations[1] //roomStations.length
+        i = 0;
+
+        for (const station of roomStations) {
+          objects = objects.concat(stationManager.setStation(coords[i][0], coords[i][1], station));
+          i++;
+        }
+
         doorImages = [];
         for (i = 1; i <= config.DOORS.length; i++) {
           if (room["door" + i] != undefined) {
@@ -57,12 +84,10 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
         await delay(50);
         signs = await uploader.uploadFiles(doorImages, spaceId);
         room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
+
         // Generate the room
-        if (size > 6) {
-          mapUploader.makePosterRoom10(apiKey, spaceId, roomStations, portals, Object.values(room_title), Object.values(signs), room);
-        } else {
-          mapUploader.makePosterRoom6(apiKey, spaceId, roomStations, portals, Object.values(room_title), Object.values(signs), room);
-        }
+        mapUploader.makePosterRoom(apiKey, spaceId, objects, portals, Object.values(room_title), Object.values(signs), room, numberOfStations);
+
         console.log("Room '" + room['Room Name'] + "' has been completed.");
       }
     }
@@ -89,6 +114,7 @@ const generateStations = async (paths, tables, config) => {
     presenterNames = Object.keys(data[1]),
     posterLinks = data[2];
 
+  console.log(posterLinks);
   let posters = generatePosters(posterLinks);
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
@@ -163,9 +189,27 @@ const tableLinks = (room, config) => {
   return links
 }
 
-const setPortals = (room, doors, config) => {
+const setPortals = (room, config, size) => {
   let portals = [];
   let i = 1;
+  let doors;
+  if (size == -1) {
+    doors = config.LOBBY_DOORS;
+  } else if (size <= 4) {
+    doors = config.DOORS.x4;
+  } else if (size <= 6) {
+    doors = config.DOORS.x6;
+  } else if (size <= 8) {
+    doors = config.DOORS.x8;
+  } else if (size <= 10) {
+    doors = config.DOORS.x10;
+  } else if (size <= 12) {
+    doors = config.DOORS.x12;
+  } else if (size <= 12) {
+    doors = config.DOORS.x12;
+  } else {
+    doors = config.DOORS.x14;
+  }
   for (const door of doors) {
     for (const portal of door) {
       portals.push({
