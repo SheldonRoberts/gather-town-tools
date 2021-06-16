@@ -29,7 +29,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
         }
       } else {
 
-        links = Object.assign(links, tableLinks(room, config));
+        links = Object.assign(links, tableLinks(room, config.SPAWNS["" + size]));
         // find the tables that are assigned to this room
         roomStations = [];
         let numberOfStations = 0;
@@ -44,14 +44,14 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
         let portals = setPortals(room, config, size);
         let objects = [];
 
-        coords = config.ORIENTATIONS[numberOfStations/2 - 2];
+        coords = config.ORIENTATIONS[size/2 - 2];
         i = 0;
         for (const station of roomStations) {
           objects = objects.concat(stationManager.setStation(coords[i][0], coords[i][1], station));
           i++;
         }
 
-        DOOR_TEXT_ALIGN = numberOfStations > 6 ? ['center', 'center', 'center', 'center'] : ['left', 'center', 'center', 'right']
+        DOOR_TEXT_ALIGN = size > 6 ? ['center', 'center', 'center', 'center'] : ['left', 'center', 'center', 'right']
         doorImages = [];
         for (i = 1; i <= 4; i++) {
           if (room["door" + i] != undefined) {
@@ -68,7 +68,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
         room_title = await uploader.uploadFiles(["Images/" + room['Room Name']], spaceId);
 
         // Generate the room
-        mapUploader.makePosterRoom(apiKey, spaceId, objects, portals, Object.values(room_title), Object.values(signs), room, numberOfStations);
+        mapUploader.makePosterRoom(apiKey, spaceId, objects, portals, Object.values(room_title), Object.values(signs), room, size);
 
         console.log("Room '" + room['Room Name'] + "' has been completed.");
       }
@@ -96,7 +96,6 @@ const generateStations = async (paths, tables, config) => {
     presenterNames = Object.keys(data[1]),
     posterLinks = data[2];
 
-  console.log(posterLinks);
   let posters = generatePosters(posterLinks);
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
@@ -159,11 +158,11 @@ const generatePosters = (links) => {
 }
 
 // creates an object of links that spawn users directly at a given table
-const tableLinks = (room, config) => {
+const tableLinks = (room, spawns) => {
   links = {}
   link_id = room["Room Name"].replace(" ", "%20");
   let i = 1;
-  for (const coord of config.SPAWNS) {
+  for (const coord of spawns) {
     name = `${link_id} Poster ${i}`;
     links[name] = `https://gather.town/app/${spaceId.replace("\\", "/")}?spawnx=${coord[0]}&spawny=${coord[1]}&map=${link_id}`;
     i++;
@@ -195,9 +194,6 @@ const setPortals = (room, config, size) => {
       case 11:
       case 12:
         return config.ROOM_SPAWN.x12;
-      case 13:
-      case 14:
-        return config.ROOM_SPAWN.x14;
       default:
         return config.LOBBY_SPAWN;
     }
@@ -215,7 +211,7 @@ const setPortals = (room, config, size) => {
   } else if (size <= 12) {
     doors = config.DOORS.x12;
   } else {
-    doors = config.DOORS.x14;
+    console.log("Max room size exceeded (Max: 12)")
   }
   for (const door of doors) {
     targetRoom = rooms.find(x => x["Room Name"] == room["door" + i])
