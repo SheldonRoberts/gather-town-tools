@@ -8,7 +8,7 @@ const makePosterRoom = async (apiKey, spaceId, objects, portals, room_title, sig
     apiKey: apiKey,
     spaceId: spaceId,
     mapId: room["Room Name"],
-    mapContent: posterRoom.defineMap(objects, size, portals),
+    mapContent: posterRoom.defineMap(objects, size, portals, room_title, signs),
   });
 }
 

@@ -33,7 +33,7 @@ const titleFromText = async (text, filename) => {
     size = 25;
   }
   textToImage.generate(text, {
-    maxWidth: 288,
+    maxWidth: 32*13,
     customHeight: 40,
     fontSize: size,
     margin: 1,

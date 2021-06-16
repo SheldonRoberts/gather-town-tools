@@ -3,17 +3,17 @@ const uploader = require('./gather-helpers');
 const mapUploader = require('./map-uploader');
 const config = require('../config');
 const stationManager = require('./station');
+let alert = require('alert');
 const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
 
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) => {
-
   links = {};
   await generateStations(paths, tables, config).then(async (stations) => {
   //mapUploader.getMapJson(apiKey, spaceId, "copy");
 
     for (const room of rooms) {
-
+      var size = room.size;
       if (room["Room Name"] == "Lobby") {
         if (lobby) {
           let doorImages = [];
@@ -41,7 +41,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
             break;
           }
         }
-        let portals = setPortals(room, config, numberOfStations);
+        let portals = setPortals(room, config, size);
         let objects = [];
 
         coords = config.ORIENTATIONS[numberOfStations/2 - 2];
@@ -51,14 +51,15 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
           i++;
         }
 
+        DOOR_TEXT_ALIGN = numberOfStations > 6 ? ['center', 'center', 'center', 'center'] : ['left', 'center', 'center', 'right']
         doorImages = [];
-        for (i = 1; i <= config.DOORS.length; i++) {
+        for (i = 1; i <= 4; i++) {
           if (room["door" + i] != undefined) {
             name = room["door" + i];
           } else {
             name = "";
           }
-          textImage.signFromText(name, `door${i}_${name}`, config.DOOR_TEXT_ALIGN[i-1]);
+          textImage.signFromText(name, `door${i}_${name}`, DOOR_TEXT_ALIGN[i-1]);
           doorImages.push(`Images/door${i}_${name}`)
         }
         textImage.titleFromText(room['Room Name'], room['Room Name']);
@@ -174,6 +175,33 @@ const setPortals = (room, config, size) => {
   let portals = [];
   let i = 1;
   let doors;
+  const getSpawn = (size) => {
+    switch(size)
+    {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        return config.ROOM_SPAWN.x4;
+      case 5:
+      case 6:
+        return config.ROOM_SPAWN.x6;
+      case 7:
+      case 8:
+        return config.ROOM_SPAWN.x8;
+      case 9:
+      case 10:
+        return config.ROOM_SPAWN.x10;
+      case 11:
+      case 12:
+        return config.ROOM_SPAWN.x12;
+      case 13:
+      case 14:
+        return config.ROOM_SPAWN.x14;
+      default:
+        return config.LOBBY_SPAWN;
+    }
+  }
   if (size == -1) {
     doors = config.LOBBY_DOORS;
   } else if (size <= 4) {
@@ -186,18 +214,18 @@ const setPortals = (room, config, size) => {
     doors = config.DOORS.x10;
   } else if (size <= 12) {
     doors = config.DOORS.x12;
-  } else if (size <= 12) {
-    doors = config.DOORS.x12;
   } else {
     doors = config.DOORS.x14;
   }
   for (const door of doors) {
+    targetRoom = rooms.find(x => x["Room Name"] == room["door" + i])
+    spawn = getSpawn(targetRoom? targetRoom.size : "Lobby");
     for (const portal of door) {
       portals.push({
         "x": portal[0],
         "y": portal[1],
-        "targetX": room['door' + i] == "Lobby" ? config.LOBBY_SPAWN[0] : config.ROOM_SPAWN[0],
-        "targetY": room['door' + i] == "Lobby" ? config.LOBBY_SPAWN[1] : config.ROOM_SPAWN[1],
+        "targetX": spawn[0],
+        "targetY": spawn[1],
         "targetMap": room['door' + i],
       });
     }
@@ -205,5 +233,6 @@ const setPortals = (room, config, size) => {
   }
   return portals;
 }
+
 
 exports.setupSpace = setupSpace;
