@@ -26,6 +26,10 @@ app.use(express.urlencoded({
   extended: true
 }))
 
+app.get('/',function(req,res) {
+  res.sendFile(__dirname + '/static/index.html');
+});
+
 app.get('/success', function(req, res) {
   res.sendFile(__dirname + '/static/success.html');
 });
