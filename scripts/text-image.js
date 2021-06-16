@@ -3,7 +3,7 @@ const ImageDataURI = require('image-data-uri');
 const config = require('../config');
 const fs = require('fs-extra');
 
-
+// handles the text for poster stations
 const imageFromText = async (text, filename) => {
   let size = 14;
   if (text == undefined) {text = " "}
@@ -23,6 +23,7 @@ const imageFromText = async (text, filename) => {
   });
 }
 
+// generates text for the room titles
 const titleFromText = async (text, filename) => {
   let size = 36;
   if (text == undefined) {text = " "}
@@ -44,6 +45,7 @@ const titleFromText = async (text, filename) => {
   });
 }
 
+// generates the text for signs to other rooms
 const signFromText = async (text, filename, alignment) => {
   let size = 36;
   if (text == undefined) {text = " "}
@@ -99,7 +101,9 @@ function saveFile(dataURI, filePath) {
 		});
 	}
 
-exports.imageFromText = imageFromText;
-exports.titleFromText = titleFromText;
-exports.signFromText = signFromText;
-exports.lobbySignFromText = lobbySignFromText;
+module.exports = {
+  imageFromText,
+  titleFromText,
+  signFromText,
+  lobbySignFromText
+}

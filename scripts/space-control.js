@@ -1,16 +1,16 @@
 const textImage = require('./text-image');
 const uploader = require('./gather-helpers');
 const mapUploader = require('./map-uploader');
-const config = require('../10-config');
+const config = require('../config');
 const stationManager = require('./station');
 const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
 
 
-const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, size) => {
+const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) => {
 
   links = {};
   await generateStations(paths, tables, config).then(async (stations) => {
-    //mapUploader.getMapJson(apiKey, spaceId, "2x2");
+  //mapUploader.getMapJson(apiKey, spaceId, "copy");
 
     for (const room of rooms) {
 
@@ -43,28 +43,9 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, s
         }
         let portals = setPortals(room, config, numberOfStations);
         let objects = [];
-        let orientations = [
-          [
-            [6,15]
-          ],
-          [
-            [5, 6],
-            [22, 6],
-            [5, 23],
-            [22, 23],
-            [22, 23],
-            [22, 23],
-            [22, 23],
-            [22, 23],
-            [22, 23],
-            [22, 23],
-            [22, 23],
 
-          ]
-        ];
-        coords = orientations[1] //roomStations.length
+        coords = config.ORIENTATIONS[numberOfStations/2 - 2];
         i = 0;
-
         for (const station of roomStations) {
           objects = objects.concat(stationManager.setStation(coords[i][0], coords[i][1], station));
           i++;

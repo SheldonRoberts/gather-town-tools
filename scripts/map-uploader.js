@@ -1,7 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-const posterRoom6 = require("../map templates/6-poster-room");
-const posterRoom10 = require("../map templates/10-poster-room");
+const posterRoom = require("../map templates/poster-room");
 const lobby = require("../map templates/lobby_1");
 
 const makePosterRoom = async (apiKey, spaceId, objects, portals, room_title, signs, room, size) => {
@@ -9,7 +8,7 @@ const makePosterRoom = async (apiKey, spaceId, objects, portals, room_title, sig
     apiKey: apiKey,
     spaceId: spaceId,
     mapId: room["Room Name"],
-    mapContent: posterRoom10.defineMap(objects, size, portals),
+    mapContent: posterRoom.defineMap(objects, size, portals),
   });
 }
 
@@ -22,6 +21,8 @@ const makeLobby = async (apiKey, spaceId, portals, signs) => {
   });
 }
 
+// save the contents of a map to output.json
+// https://gather.town/old/mapmaker/ json export serves the same purpose, but is being depreciated
 const getMapJson = async (apiKey, spaceId, map_name) => {
   try {
     const resp = await axios.get("https://gather.town/api/getMap", {
@@ -38,7 +39,8 @@ const getMapJson = async (apiKey, spaceId, map_name) => {
   }
 }
 
-
-exports.makePosterRoom = makePosterRoom;
-exports.makeLobby = makeLobby;
-exports.getMapJson = getMapJson;
+module.exports = {
+  makePosterRoom,
+  makeLobby,
+  getMapJson,
+}

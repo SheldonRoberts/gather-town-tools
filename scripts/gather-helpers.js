@@ -10,15 +10,6 @@ const setGuestlist = async (guests) => {
   });
 }
 
-const makeMap = async (apiKey, spaceId, map_name, stations, portals, room_title, signs) => {
-  await axios.post("https://gather.town/api/setMap", {
-    apiKey: apiKey,
-    spaceId: spaceId,
-    mapId: map_name,
-    mapContent: template.defineMap(stations, portals, room_title, signs),
-  });
-}
-
 const getMapJson = async (apiKey, spaceId, map_name) => {
   try {
     const resp = await axios.get("https://gather.town/api/getMap", {
@@ -71,7 +62,6 @@ const uploadFiles = async (filePaths, space_id_code) => {
 
 module.exports = {
   setGuestlist,
-  makeMap,
   getMapJson,
   uploadFiles,
 }

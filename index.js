@@ -6,6 +6,7 @@ const multer = require('multer');
 const sheetReader = require('./scripts/eventsheet-reader');
 const spaceControl = require('./scripts/space-control');
 const gather = require('./scripts/gather-helpers');
+const config = require('./config');
 const PORT = process.env.PORT || 3000;
 
 // Files uploaded to multer will keep their original name, no extension
@@ -21,18 +22,9 @@ const upload = multer({
   storage: storage
 })
 
-
-//Whenever someone connects this gets executed
-
-
 app.use(express.urlencoded({
   extended: true
 }))
-
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/static/index.html');
-  io.emit('chat message', 'peepee2');
-});
 
 app.get('/success', function(req, res) {
   res.sendFile(__dirname + '/static/success.html');
@@ -51,12 +43,12 @@ app.post('/submit-request', upload.fields([{
     }
     // turn the eventsheet (.xlsx) into JSON
     const sheet = req.files.eventsheet[0].filename;
-    tables = sheetReader.tablesToJson(sheet);
-    rooms = sheetReader.roomsToJson(sheet);
-    attendees = sheetReader.attendeesToJson(sheet);
+    tables = sheetReader.sheetToJson(config.TABLES_SHEET_NAME, sheet);
+    rooms = sheetReader.sheetToJson(config.ROOM_SHEET_NAME, sheet);
+    attendees = sheetReader.sheetToJson(config.ATTENDEES_SHEET_NAME, sheet);
+
     guestlist = {};
     for (const attendee of attendees) { guestlist[attendee.Email] = {"role":attendee.Role,"name":attendee.Name} }
-    // check if the form had 'private room' selected
     if (typeof req.body.private !== 'undefined') {
       gather.setGuestlist(guestlist);
     } else {
@@ -64,10 +56,10 @@ app.post('/submit-request', upload.fields([{
     }
 
     let lobby = (typeof req.body.lobby !== 'undefined')
-    // generate the space
     teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby);
     res.redirect('/success');
 
+    // display links to each poster
     let values = "";
     for (const [key, value] of Object.entries(teleports)) {
       name = key.replace("%20", " ")

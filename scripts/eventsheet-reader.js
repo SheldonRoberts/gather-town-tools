@@ -1,6 +1,6 @@
 var XLSX = require('xlsx');
-const config = require('../config');
 
+// log the contents of a spreasheet as json
 const logSheet = (filename) => {
   var sheets = XLSX.readFile('uploads/' + filename);
   var sheet_name_list = sheets.SheetNames;
@@ -8,26 +8,14 @@ const logSheet = (filename) => {
   console.log(sheet_name_list, data);
 }
 
-// convert the rooms sheet into a json object
-const roomsToJson = (filename) => {
+// convert the sheet into a json object
+const sheetToJson = (sheet, filename) => {
   var sheets = XLSX.readFile('uploads/' + filename);
-  var data = XLSX.utils.sheet_to_json(sheets.Sheets[config.ROOM_SHEET_NAME]);
-  return data;
-}
-// convert attendees sheet to json object
-const attendeesToJson = (filename) => {
-  var sheets = XLSX.readFile('uploads/' + filename);
-  var data = XLSX.utils.sheet_to_json(sheets.Sheets[config.ATTENDEES_SHEET_NAME]);
-  return data;
-}
-// convert the tables/teams sheet to json object
-const tablesToJson = (filename) => {
-  var sheets = XLSX.readFile('uploads/' + filename);
-  var data = XLSX.utils.sheet_to_json(sheets.Sheets[config.TABLES_SHEET_NAME]);
+  var data = XLSX.utils.sheet_to_json(sheets.Sheets[sheet]);
   return data;
 }
 
-exports.logSheet = logSheet;
-exports.roomsToJson = roomsToJson;
-exports.attendeesToJson = attendeesToJson;
-exports.tablesToJson = tablesToJson;
+module.exports = {
+  logSheet,
+  sheetToJson
+}

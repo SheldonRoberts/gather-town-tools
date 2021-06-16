@@ -24,23 +24,19 @@
     </div>
   </div>
 
-
-
   <div class="alert alert-success" role="alert">
     The rooms are being generated on Gather.town<br>Check your space in the Mapmaker
   </div>
   <h2>Direct Links</h2>
   <div class="overflow-scroll" style="height: 200px;">
-    <p style="white-space:pre-line;" id="para">Error Generating Links</p>
+    <p style="white-space:pre-line;" id="link_list">Error Generating Links</p>
   </div>
 
   <script>
     const socket = io();
-
-
     socket.on('links', function(msg) {
-      var para = document.getElementById('para');
-      para.innerHTML = msg;
+      var link_list = document.getElementById('link_list');
+      link_list.innerHTML = msg;
     });
   </script>
 </body>
