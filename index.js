@@ -39,11 +39,16 @@ app.post('/submit-request', upload.fields([{
   async function (req, res, next) {
     apiKey = req.body.key;
     spaceId = req.body.space.replace('/', '\\');
+    config.PRIMARY_COLOUR = req.body.textColor;
+    config.SECONDARY_COLOUR = req.body.bgColor;
     let imagePaths = [];
+    let useLink = false // uses link object instead of poster png if true
     if (req.files.photos != undefined) {
       for (const file of req.files.photos) {
         imagePaths.push(file.path)
       }
+    } else {
+      useLink = true;
     }
     // turn the eventsheet (.xlsx) into JSON
     const sheet = req.files.eventsheet[0].filename;
@@ -60,7 +65,7 @@ app.post('/submit-request', upload.fields([{
     }
 
     let lobby = (typeof req.body.lobby !== 'undefined')
-    teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby);
+    teleports = await spaceControl.setupSpace(apiKey, spaceId, tables, rooms, imagePaths, lobby, useLink);
     res.redirect('/success');
 
     // display links to each poster

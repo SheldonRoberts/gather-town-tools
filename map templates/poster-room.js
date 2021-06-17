@@ -1,4 +1,5 @@
 const collisionMaps = require('./collision-maps');
+const config = require('../config');
 
 const BACKGROUNDS = {
   x4: "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/vWb5tSFIGe80Ow1x/QxbReFWAujtjGAxEiz5LNA",
@@ -148,6 +149,11 @@ const rightArrow = (coords) => {
   }
 }
 const defineMap = (objects, size, portals, room_title, signs) => {
+  let spaces = [];
+  let i = 0;
+  for (const coord of config.ORIENTATIONS[size/2 - 2]) {
+    spaces = spaces.concat(makePrivateSpace(coord[0], coord[1], i++));
+  }
   var background;
   if (size <= 4) {
     background = BACKGROUNDS.x4;
@@ -328,14 +334,7 @@ const defineMap = (objects, size, portals, room_title, signs) => {
       "y": 11,
       "x": 4
     }],
-    "spaces": [
-      /*{
-            "colored": false,
-            "y": 15,
-            "x": 6,
-            "spaceId": "1"
-          }, */
-    ], //...........
+    "spaces": spaces, //...........
     "useDrawnBG": false,
     "portals": portals,
     "backgroundImagePath": background,
@@ -343,4 +342,18 @@ const defineMap = (objects, size, portals, room_title, signs) => {
   }
 }
 
+const makePrivateSpace = (x1, y1, id) => {
+  space = [];
+  for (var x2 = x1; x2<(x1+13); x2++) {
+    for (var y2 = y1; y2<(y1+11); y2++) {
+      space.push({
+            "colored": false,
+            "y": y2,
+            "x": x2,
+            "spaceId": "" + id
+          });
+    }
+  }
+  return space;
+}
 exports.defineMap = defineMap;

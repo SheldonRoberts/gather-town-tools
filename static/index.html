@@ -4,9 +4,28 @@
 <head>
   <meta charset="utf-8">
   <title>Gather.town Poster Room Maker</title>
+  <style type="text/css">
+    .hidden {
+      overflow: hidden;
+      /* Hide the element content, while height = 0 */
+      height: 0;
+      opacity: 0;
+      transition: height 500ms 0ms, opacity 400ms 0ms;
+    }
+
+    .active {
+      height: 80px;
+      opacity: 1;
+      transition: height 500ms 0ms, opacity 400ms 0ms;
+    }
+  </style>
 </head>
 
 <body class="bg-light">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
   <div class="jumbotron jumbotron-fluid " style="background-color:#007C41">
     <div class="container text-center">
       <h1 class="display-4" style="color:#FFFFFF;font-family:serif">Gather.town Poster Room Maker</h1>
@@ -25,38 +44,65 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+  <form action="/submit-request" method="post" enctype="multipart/form-data">
+    <div class="container">
+      <div class="row align-items-start">
 
-  <div class="d-flex justify-content-center">
-    <form action="/submit-request" method="post" enctype="multipart/form-data">
-      <div class="form-group">
-        <label>API key</label>
-        <input type="text" class="form-control" name="key" placeholder="" required>
-        <small class="form-text text-muted">You can generate an API key <a href="https://gather.town/apiKeys">here</a></small>
-        <br><br>
-        <label>Space ID</label>
-        <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name" required>
-        <small class="form-text text-muted">The space ID is found at the end of the room's url</small><br>
-        <br>
-        <label for="formFileMultiple" class="form-label">Upload Event .XLSX <a href="https://drive.google.com/file/d/1hBsw5iiLG3rcAEu7_W1Jxm3sq_bR37td/view?usp=sharing">(template)</a></label>
-        <input class="form-control" type="file" name="eventsheet" style="width:400px" required /><br>
-        <label for="formFileMultiple" class="form-label">Upload Posters (PNG or JPEG)</label>
-        <input class="form-control" type="file" id="formFileMultiple" name="photos" style="width:400px" multiple />
-        <small class="form-text text-muted">The poster images should be formatted First_Last.png</small><br><br>
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="private" checked>
-        <label class="form-check-label" for="flexCheckChecked">
-          Private Space (Guestlist members only)
-        </label><br>
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="lobby" checked>
-        <label class="form-check-label" for="flexCheckChecked">
-          Generate New Lobby (Existing lobby will be lost)
-        </label><br><br>
-        <button type="submit" class="btn btn-outline-primary">Make Room</button><br>
-        <small class="form-text text-muted">Takes ~ 30 seconds</small>
+        <div class="col">
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label>API key</label>
+            <input type="text" class="form-control" name="key" placeholder="" required>
+            <small class="form-text text-muted">You can generate an API key <a href="https://gather.town/apiKeys">here</a></small>
+            <br><br>
+            <label>Space ID</label>
+            <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name" required>
+            <small class="form-text text-muted">The space ID is found at the end of the room's url</small><br>
+            <br>
+            <label for="formFileMultiple" class="form-label">Upload Event .XLSX <a href="https://docs.google.com/spreadsheets/d/1q6wDott045SMHR2rRhP_wGoi49xupVw-Me4jWpQXCnM/edit?usp=sharing">(template)</a></label>
+            <input class="form-control" type="file" name="eventsheet" style="width:100%" required /><br>
+
+            <input type="checkbox" name="colorCheckbox" onclick="getElementById('posterSelector').classList.toggle('hidden');getElementById('posterSelector').classList.toggle('active');" class="form-check-input"> Upload Poster Images <br><small
+              class="form-text text-muted">(uses links from the event spreadsheet if unchecked)</small></label><br>
+            <div class="hidden" id="posterSelector">
+              <label for="formFileMultiple" class="form-label">Upload Posters (PNG or JPEG)</label>
+              <input class="form-control" type="file" id="formFileMultiple" name="photos" style="width:100%" multiple />
+              <small class="form-text text-muted">The poster images should be formatted First_Last.png</small>
+            </div><br><br>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="private">
+            <label class="form-check-label" for="flexCheckChecked">
+              Private Space (Guestlist members only)
+            </label><br>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="lobby" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+              Generate New Lobby (Existing lobby will be lost)
+            </label><br><br>
+            <button type="submit" class="btn btn-outline-primary">Make Room</button><br>
+            <small class="form-text text-muted">Takes ~ 30 seconds</small>
+          </div>
+        </div>
+
+        <div class="form-group col">
+          <div class="card" style="border: 3px solid gray; padding:10px">
+            <h3>Set Colours</h3>
+            <hr style="color:gray;height:2px;opacity:1;margin-top:0px;">
+            <label>Title Text Colour</label>
+            <input type="color" name="textColor" id="textColor" value="#7AB800" style="width: 100px">
+            <br>
+            <label>Title Background Colour</label>
+            <input type="color" name="bgColor" id="bgColor" value="#004250" style="width: 100px">
+            <br><br>
+            <h3 id="demo_title" style="color: #7AB800; background-color: #004250">Poster Title Text</h3>
+          </div>
+        </div>
       </div>
-  </div>
-  </form>
-  </div>
+    </div>
+    </div>
 
+    </div>
+  </form>
   <!-- Footer -->
   <footer class="text-center text-lg-start bg-light text-muted">
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
@@ -67,6 +113,15 @@
       </a>
     </div>
   </footer>
+
+  <script type="text/javascript">
+    document.getElementById("textColor").onchange = function() {
+      document.getElementById("demo_title").setAttribute("style", "color:" + this.value + ";background-color:"+document.getElementById("bgColor").value);
+    }
+    document.getElementById("bgColor").onchange = function() {
+      document.getElementById("demo_title").setAttribute("style", "background-color:" + this.value + ";color:"+document.getElementById("textColor"));
+    }
+  </script>
 </body>
 
 </html>

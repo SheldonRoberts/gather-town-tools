@@ -7,10 +7,10 @@ let alert = require('alert');
 const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
 
 
-const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) => {
+const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, useLink) => {
   links = {};
-  await generateStations(paths, tables, config).then(async (stations) => {
-  //mapUploader.getMapJson(apiKey, spaceId, "copy");
+  await generateStations(paths, tables, config, useLink).then(async (stations) => {
+    //mapUploader.getMapJson(apiKey, spaceId, "copy");
 
     for (const room of rooms) {
       var size = room.size;
@@ -34,8 +34,8 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
         roomStations = [];
         let numberOfStations = 0;
         while (true) {
-          if (room["table" + (numberOfStations+1)] != undefined) {
-            roomStations.push(stations.find(x => x.id == room["table" + (numberOfStations+1)]));
+          if (room["table" + (numberOfStations + 1)] != undefined) {
+            roomStations.push(stations.find(x => x.id == room["table" + (numberOfStations + 1)]));
             numberOfStations++;
           } else {
             break;
@@ -44,10 +44,10 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
         let portals = setPortals(room, config, size);
         let objects = [];
 
-        coords = config.ORIENTATIONS[size/2 - 2];
+        coords = config.ORIENTATIONS[size / 2 - 2];
         i = 0;
         for (const station of roomStations) {
-          objects = objects.concat(stationManager.setStation(coords[i][0], coords[i][1], station));
+          objects = objects.concat(stationManager.setStation(coords[i][0], coords[i][1], station, useLink));
           i++;
         }
 
@@ -59,7 +59,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
           } else {
             name = "";
           }
-          textImage.signFromText(name, `door${i}_${name}`, DOOR_TEXT_ALIGN[i-1]);
+          textImage.signFromText(name, `door${i}_${name}`, DOOR_TEXT_ALIGN[i - 1]);
           doorImages.push(`Images/door${i}_${name}`)
         }
         textImage.titleFromText(room['Room Name'], room['Room Name']);
@@ -79,7 +79,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true) =
 
 // create a station object
 // Stations are a small area that contains a poster, title, etc for each presentation
-const generateStations = async (paths, tables, config) => {
+const generateStations = async (paths, tables, config, useLink) => {
   let stations = [];
   let titles = await generateTitles(tables);
   let presenters = await generatePresenters(tables);
@@ -96,11 +96,20 @@ const generateStations = async (paths, tables, config) => {
     presenterNames = Object.keys(data[1]),
     posterLinks = data[2];
 
-  let posters = generatePosters(posterLinks);
+  let posters;
+  if (useLink) {
+    posters = {};
+    for (const table of tables) {
+      var name = "uploads/" +table["presenter name"].replace(" ", "_");
+      posters[name] = table["presentation link"];
+    }
+  } else {
+    posters = generatePosters(posterLinks);
+  }
   const maxLength = Math.max(titles.length, presenters.length, Object.keys(posters).length);
   for (var i = 0; i < maxLength; i++) {
 
-    posterName = presenterNames[i] == undefined? "" : presenterNames[i].replace("Images/presenter_", "uploads/");
+    posterName = presenterNames[i] == undefined ? "" : presenterNames[i].replace("Images/presenter_", "uploads/");
     posterName = posterName.replace(" ", "_");
 
     stations.push({
@@ -175,8 +184,7 @@ const setPortals = (room, config, size) => {
   let i = 1;
   let doors;
   const getSpawn = (size) => {
-    switch(size)
-    {
+    switch (size) {
       case 1:
       case 2:
       case 3:
@@ -215,7 +223,7 @@ const setPortals = (room, config, size) => {
   }
   for (const door of doors) {
     targetRoom = rooms.find(x => x["Room Name"] == room["door" + i])
-    spawn = getSpawn(targetRoom? targetRoom.size : "Lobby");
+    spawn = getSpawn(targetRoom ? targetRoom.size : "Lobby");
     for (const portal of door) {
       portals.push({
         "x": portal[0],

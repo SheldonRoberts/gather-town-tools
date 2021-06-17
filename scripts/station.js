@@ -1,4 +1,5 @@
-const setStation = (x, y, station) => {
+const setStation = (x, y, station, useLink) => {
+
   return [
   // POSTER BACKDROP
     {
@@ -121,7 +122,7 @@ const setStation = (x, y, station) => {
     },
 
     // POSTER OBJECT
-    station.poster.posterImg == undefined ? {} : {
+    station.poster == undefined? {} : {
       "x": x+5,
       "color": "#639bff",
       "normal": "https://cdn.gather.town/v0/b/gather-town.appspot.com/o/internal-dashboard-upload%2FJLcO7fPfJlop9WvY?alt=media&token=29dbc584-d603-49cb-af86-028309197236",
@@ -132,12 +133,13 @@ const setStation = (x, y, station) => {
       "width": 3,
       "_tags": ["decoration", "decoration/wall", "office", "conference", "presentation"],
       "distThreshold": 5,
-      "type": 2,
+      "type": useLink? 1 : 2,
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_ac6e45d9-8d9e-4836-b9ca-d357b2452990",
       "height": 2,
       "properties": {
-        "image": station.poster.posterImg,
-        "preview": station.poster.posterPreview
+        "url": useLink ? station.poster : "",
+        "image": useLink? "" : station.poster.posterImg,
+        "preview": useLink? "" : station.poster.posterPreview
       },
       "_name": "Poster",
       "orientation": 0,
