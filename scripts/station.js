@@ -132,7 +132,7 @@ const setStation = (x, y, station, useLink) => {
       "offsetY": 0,
       "width": 3,
       "_tags": ["decoration", "decoration/wall", "office", "conference", "presentation"],
-      "distThreshold": 5,
+      "distThreshold": 6,
       "type": useLink? 1 : 2,
       "id": "Poster - 8RSUnkK2tlLxX8uX-o-Ss_ac6e45d9-8d9e-4836-b9ca-d357b2452990",
       "height": 2,

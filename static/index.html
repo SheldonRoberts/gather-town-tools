@@ -85,9 +85,9 @@
         </div>
 
         <div class="form-group col">
-          <div class="card" style="border: 3px solid gray; padding:10px">
-            <h3>Set Colours</h3>
-            <hr style="color:gray;height:2px;opacity:1;margin-top:0px;">
+          <div class="card" style="border: 3px solid lightgray; padding:10px">
+            <h3 style="font-family:serif">Set Colours</h3>
+            <hr style="color:lightgray;height:2px;opacity:1;margin-top:0px;">
             <label>Title Text Colour</label>
             <input type="color" name="textColor" id="textColor" value="#7AB800" style="width: 100px">
             <br>
@@ -119,7 +119,7 @@
       document.getElementById("demo_title").setAttribute("style", "color:" + this.value + ";background-color:"+document.getElementById("bgColor").value);
     }
     document.getElementById("bgColor").onchange = function() {
-      document.getElementById("demo_title").setAttribute("style", "background-color:" + this.value + ";color:"+document.getElementById("textColor"));
+      document.getElementById("demo_title").setAttribute("style", "background-color:" + this.value + ";color:"+document.getElementById("textColor").value);
     }
   </script>
 </body>

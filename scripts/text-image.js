@@ -7,8 +7,8 @@ const fs = require('fs-extra');
 const imageFromText = async (text, filename) => {
   let size = 14;
   if (text == undefined) {text = " "}
-  if (text.length > 83) {
-    text = text.substring(0, 85) + "...";
+  if (text.length > 100) {
+    text = text.substring(0, 100) + "...";
   }
   textToImage.generate(text, {
     maxWidth: 32*13,
@@ -34,7 +34,7 @@ const titleFromText = async (text, filename) => {
   }
   textToImage.generate(text, {
     maxWidth: 32*13,
-    customHeight: 40,
+    customHeight: 80,
     fontSize: size,
     margin: 1,
     bgColor: config.TITLE_BG_COLOUR,
@@ -56,7 +56,7 @@ const signFromText = async (text, filename, alignment) => {
   }
   textToImage.generate(text, {
     maxWidth: 288,
-    customHeight: 40,
+    customHeight: 80,
     fontSize: size,
     margin: 1,
     bgColor: config.BG_COLOUR,

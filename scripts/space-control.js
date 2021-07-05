@@ -41,17 +41,24 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, u
             break;
           }
         }
-        let portals = setPortals(room, config, size);
+        let portals = setPortals(room, config, 6);
         let objects = [];
 
         coords = config.ORIENTATIONS[size / 2 - 2];
+        // TEMPERARY
+        coords = [
+          [5, 6],
+          [39, 6],
+          [5, 23],
+          [39, 23],
+        ];
         i = 0;
         for (const station of roomStations) {
           objects = objects.concat(stationManager.setStation(coords[i][0], coords[i][1], station, useLink));
           i++;
         }
-
-        DOOR_TEXT_ALIGN = size > 6 ? ['center', 'center', 'center', 'center'] : ['left', 'center', 'center', 'right']
+        // TEMPERARY
+        DOOR_TEXT_ALIGN = size > 3 ? ['left', 'center', 'center', 'center'] : ['left', 'center', 'center', 'right']
         doorImages = [];
         for (i = 1; i <= 4; i++) {
           if (room["door" + i] != undefined) {
@@ -100,7 +107,7 @@ const generateStations = async (paths, tables, config, useLink) => {
   if (useLink) {
     posters = {};
     for (const table of tables) {
-      var name = "uploads/" +table["presenter name"].replace(" ", "_");
+      var name = "uploads/" + table["presenter name"].replace(" ", "_");
       posters[name] = table["presentation link"];
     }
   } else {
