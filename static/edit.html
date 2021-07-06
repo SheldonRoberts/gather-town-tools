@@ -3,78 +3,148 @@
 
 <head>
     <link
-  href="https://uploads-ssl.webflow.com/60e37a8ff174023a0e03df8a/css/sheldons-top-notch-project-299a33.webflow.f015f21cd.css"
-  rel="stylesheet" type="text/css" />
-  <meta charset="utf-8">
-  <title>Gather.town Poster Room Maker</title>
-  <style type="text/css">
-    .hidden {
-      overflow: hidden;
-      /* Hide the element content, while height = 0 */
-      height: 0;
-      opacity: 0;
-      transition: height 500ms 0ms, opacity 400ms 0ms;
-    }
+        href="https://uploads-ssl.webflow.com/60e37a8ff174023a0e03df8a/css/sheldons-top-notch-project-299a33.webflow.f015f21cd.css"
+        rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>Gather.town Poster Room Maker</title>
+    <style type="text/css">
+        .hidden {
+            overflow: hidden;
+            /* Hide the element content, while height = 0 */
+            height: 0;
+            opacity: 0;
+            transition: height 500ms 0ms, opacity 400ms 0ms;
+        }
 
-    .active {
-      height: 80px;
-      opacity: 1;
-      transition: height 500ms 0ms, opacity 400ms 0ms;
-    }
-  </style>
-  
+        .active {
+            height: 80px;
+            opacity: 1;
+            transition: height 500ms 0ms, opacity 400ms 0ms;
+        }
+    </style>
+
 </head>
 
 <body class="bg-light">
 
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
-  <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav">
-    <div class="w-container"><a href="/" aria-current="page" class="brand-link w-nav-brand w--current">
-            <h1 class="brand-text">Gather.TOWN POSTER ROOM ASSISTANT</h1>
-        </a>
-        <nav role="navigation" class="navigation-menu w-nav-menu"><a href="/home" aria-current="page"
-                class="navigation-link w-nav-link w--current">Home</a><a href="/"
-                class="navigation-link w-nav-link">Make Room</a></nav>
-        <div class="hamburger-button w-nav-button">
-            <div class="w-icon-nav-menu"></div>
+    <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav" style="background-color:#e7edfd;">
+        <div class="w-container"><a href="/" aria-current="page" class="brand-link w-nav-brand w--current">
+                <h1 class="brand-text">Gather.TOWN POSTER ROOM ASSISTANT</h1>
+            </a>
+            <nav role="navigation" class="navigation-menu w-nav-menu"><a href="/home" aria-current="page"
+                    class="navigation-link w-nav-link w--current">Home</a><a href="/"
+                    class="navigation-link w-nav-link">Make Room</a></nav>
+            <div class="hamburger-button w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+            </div>
         </div>
     </div>
-</div>
-  <!--Bootstrap -->
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
-  <!-- MDB -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--Bootstrap -->
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   
-    </div>
-  </form>
-  <!-- Footer -->
-  <footer class="text-center text-lg-start bg-light text-muted">
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      Sheldon Roberts:
-      <a class="text-reset fw-bold" href="https://github.com/SheldonRoberts/gather-town-tools">Project Github</a>
-      <a href="https://github.com/SheldonRoberts/gather-town-tools" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-  </footer>
+    <form action="/submit-request-edit" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row align-items-start">
 
-  <script type="text/javascript">
-    document.getElementById("textColor").onchange = function() {
-      document.getElementById("demo_title").setAttribute("style", "color:" + this.value + ";background-color:"+document.getElementById("bgColor").value);
-    }
-    document.getElementById("bgColor").onchange = function() {
-      document.getElementById("demo_title").setAttribute("style", "background-color:" + this.value + ";color:"+document.getElementById("textColor").value);
-    }
-  </script>
+                <div class="col-3" style="width:20%">
+                </div>
+
+                <div class="col-3" style="width: 50%;">
+                    <h2>Edit Room</h2>
+                    <br>
+                    <h4>How it works: </h4>
+                    <p>Create a room to the design of your choice. Place "Backdrop" objects in each position you would like a poster to be.
+                         Fill out the information below and click <i>Edit Room</i>. A 13x13 tile poster station will be added around each backdrop. The information for each poster station will be taken from the spreadsheet in order.</p>
+                    <div class="form-group">
+                        <label>API key</label>
+                        <input type="text" class="form-control" name="key" placeholder="" required>
+                        <small class="form-text text-muted">You can generate an API key <a
+                                href="https://gather.town/apiKeys">here</a></small>
+                        <br><br>
+                        <label>Space ID</label>
+                        <input type="text" class="form-control" name="space" placeholder="ex. asf23d23872/space-name"
+                            required>
+                        <small class="form-text text-muted">The space ID is found at the end of the room's
+                            url</small><br><br>
+                        <label>Room Name</label>
+                        <input type="text" class="form-control" name="room" placeholder="" required>
+                        <br>
+                        <label for="formFileMultiple" class="form-label">Upload Event .XLSX <a
+                                href="https://docs.google.com/spreadsheets/d/1q6wDott045SMHR2rRhP_wGoi49xupVw-Me4jWpQXCnM/edit?usp=sharing">(template)</a></label>
+                        <input class="form-control" type="file" name="eventsheet" style="width:100%" required /><br>
+
+                        <input type="checkbox" name="colorCheckbox"
+                            onclick="getElementById('posterSelector').classList.toggle('hidden');getElementById('posterSelector').classList.toggle('active');"
+                            class="form-check-input"> Upload Poster Images <br><small class="form-text text-muted">(uses
+                            links from the event spreadsheet if unchecked)</small></label><br>
+                        <div class="hidden" id="posterSelector">
+                            <label for="formFileMultiple" class="form-label">Upload Posters (PNG or JPEG)</label>
+                            <input class="form-control" type="file" id="formFileMultiple" name="photos"
+                                style="width:100%" multiple />
+                            <small class="form-text text-muted">The poster images should be formatted
+                                First_Last.png</small>
+                        </div><br>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="private">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Private Space (Guestlist members only)
+                        </label><br>
+                        <br>
+                        <button type="submit" class="btn btn-outline-primary">Edit Room</button><br>
+                        <small class="form-text text-muted">Takes ~ 30 seconds</small>
+                    </div>
+                </div>
+
+                <div class="form-group col">
+                    <div class="card" style="border: 3px solid lightgray; padding:10px">
+                        <h3 style="font-family:serif">Set Colours</h3>
+                        <hr style="color:lightgray;height:2px;opacity:1;margin-top:0px;">
+                        <label>Title Text Colour</label>
+                        <input type="color" name="textColor" id="textColor" value="#7AB800" style="width: 100px">
+                        <br>
+                        <label>Title Background Colour</label>
+                        <input type="color" name="bgColor" id="bgColor" value="#004250" style="width: 100px">
+                        <br><br>
+                        <h3 id="demo_title" style="color: #7AB800; background-color: #004250">Poster Title Text</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        </div>
+    </form>
+    </form>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Sheldon Roberts:
+            <a class="text-reset fw-bold" href="https://github.com/SheldonRoberts/gather-town-tools">Project Github</a>
+            <a href="https://github.com/SheldonRoberts/gather-town-tools" class="me-4 text-reset">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        document.getElementById("textColor").onchange = function () {
+            document.getElementById("demo_title").setAttribute("style", "color:" + this.value + ";background-color:" + document.getElementById("bgColor").value);
+        }
+        document.getElementById("bgColor").onchange = function () {
+            document.getElementById("demo_title").setAttribute("style", "background-color:" + this.value + ";color:" + document.getElementById("textColor").value);
+        }
+    </script>
 </body>
 
 </html>

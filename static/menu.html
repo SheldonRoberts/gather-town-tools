@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8" />
     <title>Sheldon&#x27;s Top-Notch Project</title>
@@ -28,7 +29,8 @@
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav">
+    <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navigation-bar w-nav"
+        style="background-color:#e7edfd;">
         <div class="w-container"><a href="/" aria-current="page" class="brand-link w-nav-brand w--current">
                 <h1 class="brand-text">Gather.TOWN POSTER ROOM ASSISTANT</h1>
             </a>
@@ -49,43 +51,34 @@
                 existing room</a>
         </div>
     </div>
-    <div class="section">
-        <div class="w-container">
-            <div class="section-title-group">
-                <h2 class="section-heading centered">what we do</h2>
-                <div class="section-subheading center">This is some text inside of a div block.</div>
-            </div>
-            <div class="w-row">
-                <div class="w-col w-col-4">
-                    <div data-w-id="270e8437-efa3-df11-d438-de69b23e41e9" style="opacity:0" class="white-box"><img
-                            src="https://uploads-ssl.webflow.com/60e37a8ff174023a0e03df8a/60e37a90f17402893803dfb7_feather-15-white.svg"
-                            alt="" class="grid-image" />
-                        <h3>Graphic Design</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-                            elementum tristique.</p>
-                    </div>
-                </div>
-                <div class="w-col w-col-4">
-                    <div data-w-id="29c25774-570b-ddb2-69b5-f4ddbb194afd" style="opacity:0" class="white-box"><img
-                            src="https://uploads-ssl.webflow.com/60e37a8ff174023a0e03df8a/60e37a90f17402812503dfa0_feather2-17-white.svg"
-                            width="210" alt="" class="grid-image" />
-                        <h3>Awesome code</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-                            elementum tristique.</p>
-                    </div>
-                </div>
-                <div class="w-col w-col-4">
-                    <div data-w-id="49e69b8a-ef40-4d84-1f92-d2617143b8db" style="opacity:0" class="white-box"><img
-                            src="https://uploads-ssl.webflow.com/60e37a8ff174023a0e03df8a/60e37a90f17402e8a403dfc8_feather2-22-white.svg"
-                            alt="" class="grid-image" />
-                        <h3>free template</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-                            elementum tristique.</p>
-                    </div>
-                </div>
-            </div>
+
+
+    <div class="w-container">
+        <div class="section-title-group">
+            <h2 class="section-heading centered">How to Make a Poster Room</h2>
         </div>
+        <div class="section-subheading center">STEp 1) Setup a space on <a
+                href="https://gather.town/app">GATHER.TOWN</a></div>
+        <p class="paragraph">Select <em>Create New Space -&gt;&nbsp;Start from blank</em> and fill out the remaining
+            information before pressing <em>Open Mapmaker</em></p>
+        <div class="section-subheading center">STEp 2) Copy the space id<a href="https://gather.town/app"></a></div>
+        <p class="paragraph"><em>Once on the mapmaker page, the space ID is the URL past /mapmaker/. For the URL
+                https://gather.town/mapmaker/0Y1vcO1iHRCS4Abw/demo, the Space Id is 0Y1vcO1iHRCS4Abw/demo</em></p>
+        <div class="section-subheading center">STEp 3) Create an API Key<a href="https://gather.town/app"></a></div>
+        <p class="paragraph">Go to this <a href="#https://gather.town/apiKeys">link</a> to generate an API key which is
+            permenantly linked to the account. The key must belong to the same account of the space being edited<a
+                href="#https://gather.town/apiKeys"></a></p>
+        <div class="section-subheading center">STEp 4) Fill out an event sheet<a href="https://gather.town/app"></a>
+        </div>
+        <p class="paragraph">Fill out an excel spreadsheet that follows the <a
+                href="https://docs.google.com/spreadsheets/d/1q6wDott045SMHR2rRhP_wGoi49xupVw-Me4jWpQXCnM/edit?usp=sharing">template</a>
+            outline. The sheet has 3 sections: <br>Attendees - A list of names and emails that will be added to the
+            guestlist if the space is private<br>tables/teams - A list of 'tables' which <strong>MUST </strong>include a
+            presenter name and ID. All other columns are optional.<br>Rooms - A list of rooms that have up to 4 doors leading to other rooms, a size, and a list of tables (ID) to be added to the room.</p>
+        <div class="section-subheading center">STEp 5)&nbsp;Ready To GO! CLick the button below to get started <br><br>
+            <a href="/" class="button">Make NEW room</a>
     </div>
+
     <footer class="text-center text-lg-start bg-light text-muted">
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             Sheldon Roberts:

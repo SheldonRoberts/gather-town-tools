@@ -88,4 +88,49 @@ app.post('/submit-request', upload.fields([{
     });
   });
 
+  app.post('/submit-request-edit', upload.fields([{
+    name: 'photos', maxcount: 24}, {name: 'eventsheet', maxcount: 1}]),
+    async function (req, res, next) {
+      apiKey = req.body.key;
+      spaceId = req.body.space.replace('/', '\\');
+      room = req.body.room;
+      config.PRIMARY_COLOUR = req.body.textColor;
+      config.SECONDARY_COLOUR = req.body.bgColor;
+      let imagePaths = [];
+      let useLink = false // uses link object instead of poster png if true
+      if (req.files.photos != undefined) {
+        for (const file of req.files.photos) {
+          imagePaths.push(file.path)
+        }
+      } else {
+        useLink = true;
+      }
+      // turn the eventsheet (.xlsx) into JSON
+      const sheet = req.files.eventsheet[0].filename;
+      tables = sheetReader.sheetToJson(config.TABLES_SHEET_NAME, sheet);
+      attendees = sheetReader.sheetToJson(config.ATTENDEES_SHEET_NAME, sheet);
+  
+      guestlist = {};
+      for (const attendee of attendees) { guestlist[attendee.Email] = {"role":attendee.Role,"name":attendee.Name} }
+      if (typeof req.body.private !== 'undefined') {
+        gather.setGuestlist(guestlist);
+      } else {
+        gather.setGuestlist(null); // null guestlist creates a public space
+      }
+  
+      teleports = await spaceControl.editSpace(apiKey, spaceId, tables, room, imagePaths, useLink);
+      res.redirect('/success');
+  
+      // display links to each poster
+      let values = "";
+      for (const [key, value] of Object.entries(teleports)) {
+        name = key.replace("%20", " ")
+        //values += name + ": <a href='" + value + "'>'\r\n";
+        values += `<a href = '${value}'>${name}</a><br>`
+      }
+      io.on('connection', (socket) => {
+        io.emit('links', values);
+      });
+    });
+
 http.listen(PORT, () => console.log("listening on port: " + PORT))

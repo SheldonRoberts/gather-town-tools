@@ -3,13 +3,46 @@ const uploader = require('./gather-helpers');
 const mapUploader = require('./map-uploader');
 const config = require('../config');
 const stationManager = require('./station');
-let alert = require('alert');
+const axios = require("axios");
 const delay = ms => new Promise(res => setTimeout(res, ms)); // delay after writing files to limit issues
+
+const editSpace = async (apiKey, spaceId, tables, roomName, paths, useLink) => {
+  console.log('editing space');
+  mapJSON = await mapUploader.getMapJson(apiKey, spaceId, roomName);
+  const backdrops = mapJSON.objects.filter(object => object._name == "Backdrop");
+
+  await generateStations(paths, tables, useLink).then(async (stations) => {
+    offset_x = -5;
+    offset_y = -3;
+    stationNumber = 0
+    links = {}
+    for (const backdrop of backdrops) {
+      if (stationNumber >= stations.length) {
+        break;
+      }
+      mapJSON.objects = mapJSON.objects.concat(
+        stationManager.setStation(backdrop.x + offset_x, backdrop.y + offset_y, stations[stationNumber], useLink));
+      name = `${roomName} Poster ${stationNumber+1}`;
+      links[name] = `https://gather.town/app/${spaceId.replace("\\", "/")}?spawnx=${backdrop.x}&spawny=${backdrop.y + 4}&map=${link_id = roomName.replace(" ", "%20")}`;
+      stationNumber++;
+    }
+
+    await axios.post("https://gather.town/api/setMap", {
+      apiKey: apiKey,
+      spaceId: spaceId,
+      mapId: roomName,
+      mapContent: mapJSON,
+    });
+
+    console.log('editing space complete');
+  });
+  return links
+}
 
 
 const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, useLink) => {
   links = {};
-  await generateStations(paths, tables, config, useLink).then(async (stations) => {
+  await generateStations(paths, tables, useLink).then(async (stations) => {
     //mapUploader.getMapJson(apiKey, spaceId, "copy");
 
     for (const room of rooms) {
@@ -18,8 +51,8 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, u
         if (lobby) {
           let doorImages = [];
           for (i = 1; i <= config.LOBBY_DOORS.length; i++) {
-            textImage.lobbySignFromText(room["door" + i], `door${i}_${room["door"+i]}`, 'center');
-            doorImages.push(`Images/door${i}_${room["door"+i]}`)
+            textImage.lobbySignFromText(room["door" + i], `door${i}_${room["door" + i]}`, 'center');
+            doorImages.push(`Images/door${i}_${room["door" + i]}`)
           }
           await delay(50);
           let signs = await uploader.uploadFiles(doorImages, spaceId);
@@ -79,7 +112,7 @@ const setupSpace = async (apiKey, spaceId, tables, rooms, paths, lobby = true, u
 
 // create a station object
 // Stations are a small area that contains a poster, title, etc for each presentation
-const generateStations = async (paths, tables, config, useLink) => {
+const generateStations = async (paths, tables, useLink) => {
   let stations = [];
   let titles = await generateTitles(tables);
   let presenters = await generatePresenters(tables);
@@ -240,3 +273,4 @@ const setPortals = (room, config, size) => {
 
 
 exports.setupSpace = setupSpace;
+exports.editSpace = editSpace;

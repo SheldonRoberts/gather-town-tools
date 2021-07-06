@@ -32,8 +32,9 @@ const getMapJson = async (apiKey, spaceId, map_name) => {
         mapId: map_name,
       }
     });
-    let data = JSON.stringify(resp.data);
-    fs.writeFileSync('output.json', data)
+    return resp.data;
+    //let data = JSON.stringify(resp.data);
+    //fs.writeFileSync('output.json', data)
   } catch (err) {
     console.log(err);
   }
